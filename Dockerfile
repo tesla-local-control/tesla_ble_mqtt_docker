@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine3.18 as build
+FROM golang:1.24-alpine3.20 as build
 
 RUN apk add --no-cache \
   unzip
@@ -12,7 +12,7 @@ WORKDIR /app/vehicle-command-main
 RUN go get ./...
 RUN go build -o /app/bin ./...
 
-FROM alpine:3.19.1
+FROM alpine:3.20.0
 
 # install dependencies
 # RUN apk add --no-cache \
