@@ -1,5 +1,3 @@
-version: '3'
-
 volumes:
   tesla_ble:
     external: true
