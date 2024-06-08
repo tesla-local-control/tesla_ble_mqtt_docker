@@ -19,13 +19,13 @@ FROM alpine:3.20.0
 #  python3 
 
 # Create various working directories
-# RUN mkdir /data /share
+RUN mkdir /data
 
 # Copy project files into required locations
-#COPY tesla_http_proxy/app /app
+COPY tesla_ble/app /app
 
-# Copy tesla-http-proxy binary from build stage
-# COPY --from=build /app/bin/tesla-http-proxy /app/bin/tesla-keygen /usr/bin/
+# Copy binaries from build stage
+COPY --from=build /app/bin/tesla-control /app/bin/tesla-keygen /usr/bin/
 
 # Set environment variables
 # ENV GNUPGHOME="/data/gnugpg"
