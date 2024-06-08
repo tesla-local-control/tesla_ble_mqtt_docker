@@ -22,7 +22,7 @@ FROM alpine:3.20.0
 RUN mkdir /data
 
 # Copy project files into required locations
-COPY tesla_ble_docker/app /app
+#COPY tesla_ble_docker/app /app
 
 # Copy binaries from build stage
 COPY --from=build /app/bin/tesla-control /app/bin/tesla-keygen /usr/bin/
