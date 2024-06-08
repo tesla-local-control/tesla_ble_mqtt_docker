@@ -1,13 +1,13 @@
 version: '3'
 
 volumes:
-  tesla_ble_proxy:
+  tesla_ble:
     external: true
 
 services:   
-  tesla_ble_proxy:
-    container_name: tesla_ble_proxy
-    image: "iainbullock/tesla_ble_proxy:latest"
+  tesla_ble:
+    container_name: tesla_ble
+    image: "iainbullock/tesla_ble:latest"
  
     environment:
       - TZ='Europe/London'
@@ -16,7 +16,7 @@ services:
     tty: true         
 
     volumes:
-      - tesla_ble_proxy:/data
+      - tesla_ble:/data
         
     network_mode: bridge
     ports:
