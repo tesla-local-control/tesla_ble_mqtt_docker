@@ -16,7 +16,8 @@ FROM alpine:3.20.0
 
 # install dependencies
 # RUN apk add --no-cache \
-#  python3 
+openssl \
+openssh-server
 
 # Create various working directories
 RUN mkdir /data
