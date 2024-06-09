@@ -1,8 +1,8 @@
 #!/bin/ash
-# Enter values for your particular configuration here
+# Enter values for your particular configuration here, or set in docker-compose.yml
 
 # VIN for your car goes here
-TESLA_VIN=1234567890
+TESLA_VIN='00000000000000000'
 
-# Change this to OPTIONS_COMPLETE=1 when ready to run
-OPTIONS_COMPLETE=0
+# Port for the ssh connection to send commands
+SSH_PORT='14222'
