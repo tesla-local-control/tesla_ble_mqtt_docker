@@ -15,6 +15,7 @@ services:
 
     volumes:
       - tesla_ble:/data
+      - /run/dbus:/run/dbus
         
     network_mode: bridge
     ports:
