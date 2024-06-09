@@ -17,9 +17,7 @@ services:
       - tesla_ble:/data
       - /run/dbus:/run/dbus
         
-    network_mode: bridge
-    ports:
-      - 14422:22
+    network_mode: host
 
     restart: no
     #restart: unless-stopped  
