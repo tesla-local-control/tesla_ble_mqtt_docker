@@ -15,7 +15,7 @@ RUN go build -o /app/bin ./...
 FROM alpine:3.20.0
 
 # install dependencies
-# RUN apk add --no-cache \
+RUN apk add --no-cache \
 openssl \
 bluez \
 openssh-server
