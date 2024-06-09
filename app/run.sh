@@ -1,5 +1,5 @@
 #!/bin/ash
-set -e
+set +e
 
 echo "tesla_ble_docker by Iain Bullock 2024 https://github.com/iainbullock/tesla_ble_docker"
 echo "Inspiration by Raphael Murray https://github.com/raphmur"
@@ -23,3 +23,4 @@ if [ -f public.pem ]; then
   echo "Public key found, sending to vehicle using BLE"
   tesla-control -ble add-key-request public.pem owner cloud_key
 fi
+echo $?
