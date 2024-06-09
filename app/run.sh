@@ -5,10 +5,6 @@ echo "tesla_ble_docker by Iain Bullock 2024 https://github.com/iainbullock/tesla
 echo "Inspiration by Raphael Murray https://github.com/raphmur"
 echo "Instructions by Shankar Kumarasamy https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3"
 
-# Read config options
-cp -n /app/config.sh /data
-. /data/config.sh
-
 echo -e "Configuration Options are:"
 echo TESLA_VIN=$TESLA_VIN
 echo SSH_PORT=$SSH_PORT
