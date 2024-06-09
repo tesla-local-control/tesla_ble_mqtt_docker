@@ -23,6 +23,7 @@ services:
       - /run/dbus:/run/dbus
         
     network_mode: host
+    privileged: true 
 
     restart: no
     #restart: unless-stopped  
