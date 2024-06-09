@@ -9,8 +9,8 @@ services:
  
     environment:
       - TZ='Europe/London'
-      - TESLA_VIN='00000000000000000'
-      - SSH_PORT='14222'
+      - TESLA_VIN=00000000000000000
+      - SSH_PORT=14222
       
     stdin_open: true
     tty: true    
