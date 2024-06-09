@@ -9,11 +9,6 @@ echo -e "Configuration Options are:"
 echo TESLA_VIN=$TESLA_VIN
 echo SSH_PORT=$SSH_PORT
 
-if [ ! -f /data/private.pem ]; then
-  echo -e "Private key not found, assuming this is the first run"
-  generate_tesla_keypair
-fi
-
 generate_tesla_keypair() {
   echo -e "Generating the private key"
   openssl ecparam -genkey -name prime256v1 -noout > private.pem
@@ -22,4 +17,10 @@ generate_tesla_keypair() {
   openssl ec -in private.pem -pubout > public.pem
   cat public.pem
 }
+
+if [ ! -f /data/private.pem ]; then
+  echo -e "Private key not found, assuming this is the first run"
+  generate_tesla_keypair
+fi
+
 
