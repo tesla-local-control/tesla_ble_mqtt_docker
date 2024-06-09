@@ -13,8 +13,11 @@ services:
       - SSH_PORT='14222'
       
     stdin_open: true
-    tty: true         
-
+    tty: true    
+    
+    entrypoint: "/app/run.sh"
+    working_dir: /data
+    
     volumes:
       - tesla_ble:/data
       - /run/dbus:/run/dbus
