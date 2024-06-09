@@ -27,13 +27,4 @@ RUN mkdir /data
 COPY app /app
 
 # Copy binaries from build stage
-COPY --from=build /app/bin/tesla-control /app/bin/tesla-keygen /usr/bin/
-
-# Set environment variables
-# ENV GNUPGHOME="/data/gnugpg"
-# ENV PASSWORD_STORE_DIR="/data/password-store"
-
-# Python 3 HTTP Server serves the current working dir
-# WORKDIR /app
-
-# ENTRYPOINT ["/app/run.sh"]
+COPY --from=build /app/bin/tesla-control /usr/bin/
