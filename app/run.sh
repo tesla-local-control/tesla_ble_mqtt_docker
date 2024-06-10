@@ -7,7 +7,6 @@ echo "Instructions by Shankar Kumarasamy https://shankarkumarasamy.blog/2024/01/
 
 echo "Configuration Options are:"
 echo TESLA_VIN=$TESLA_VIN
-echo SSH_PORT=$SSH_PORT
 echo MQTT_IP=$MQTT_IP
 echo MQTT_PORT=$MQTT_PORT
 echo MQTT_USER=$MQTT_USER
@@ -18,9 +17,10 @@ send_command() {
   echo "Attempt $i/5"
   tesla-control -ble -key-name private.pem -key-file private.pem $1
   if [ $? -eq 0 ]; then
+    echo "Ok"
     break
   fi
-  sleep 2
+  sleep 5
  done 
 }
 
