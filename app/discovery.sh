@@ -34,7 +34,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "unique_id": "tesla_ble_deploy_key"
  }' 
 
-mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/open_trunk/config -m \
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/trunk-open/config -m \
  '{
   "command_topic": "tesla_ble/command",
   "device": {
@@ -46,10 +46,26 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
    "name": "Tesla_BLE_MQTT"
   },
   "name": "Open Trunk",
-  "payload_press": "open_trunk",
-  "unique_id": "tesla_ble_open_trunk"
+  "payload_press": "trunk-open",
+  "unique_id": "tesla_ble_trunk-open"
  }' 
-
+ 
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/trunk-close/config -m \
+ '{
+  "command_topic": "tesla_ble/command",
+  "device": {
+   "identifiers": [
+   "tesla_ble_mqtt"
+   ],
+   "manufacturer": "iainbullock",
+   "model": "tesla_ble_mqtt",
+   "name": "Tesla_BLE_MQTT"
+  },
+  "name": "Close Trunk",
+  "payload_press": "trunk-close",
+  "unique_id": "tesla_ble_trunk-close"
+ }' 
+ 
 mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/charging-start/config -m \
  '{
   "command_topic": "tesla_ble/command",
