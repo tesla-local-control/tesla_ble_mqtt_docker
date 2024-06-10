@@ -13,13 +13,24 @@ echo MQTT_PORT=$MQTT_PORT
 echo MQTT_USER=$MQTT_USER
 echo "MQTT_PWD=Not Shown"
 
+send_command() {
+ for i in $(seq 5); do
+  tesla-control -ble -key-name private.pem -key-file private.pem $1
+  if [ $? -eq 0 ]; then
+    break
+  fi
+  echo "Attempt $i/5"
+  sleep 2
+ done 
+}
+
 echo "Setting up auto discovery for Home Assistant"
 . /app/discovery.sh
 
 echo "Listening to MQTT"
 while true
 do
- mosquitto_sub -h $MQTT_ip -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -44,21 +55,21 @@ do
      esac;;
     
     tesla_ble/command)
-     echo Command $msg requested;;
+     echo "Command $msg requested"
      case $msg in
        trunk-open)
         echo "Opening Trunk"
-        tesla-control -ble -key-name private.pem -key-file private.pem $msg;;
+        send_command $msg;;
        trunk-close)
         echo "Closing Trunk"
-        tesla-control -ble -key-name private.pem -key-file private.pem $msg;;
+        send_command $msg;;
        *)
         echo "Invalid Command Request";;
       esac;;
       
     tesla_ble/charging-amps)
-     echo Set Charging Amps to $msg requested;;
-    
+     echo Set Charging Amps to $msg requested
+     send_command "charging-set-amps $msg";;
     *)
      echo "Invalid MQTT topic";;
    esac
