@@ -113,7 +113,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "unique_id": "tesla_ble_charging-set-amps",
   "min": "0",
   "max": "48",
-  "mode": "box",
+  "mode": "slider",
   "unit_of_measurement": "Amps",
   "retain": "true",
   "icon": "mdi:current-ac"
