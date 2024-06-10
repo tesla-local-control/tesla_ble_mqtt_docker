@@ -57,6 +57,9 @@ do
     tesla_ble/command)
      echo "Command $msg requested"
      case $msg in
+       wake)
+        echo "Waking Car"
+        send_command $msg;;     
        trunk-open)
         echo "Opening Trunk"
         send_command $msg;;
