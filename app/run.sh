@@ -19,7 +19,7 @@ echo "Setting up auto discovery for Home Assistant"
 echo "Listening to MQTT"
 while true
 do
- mosquitto_sub -h $mqtt_ip -p $mqtt_port -u $mqtt_user -P $mqtt_pwd -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub -h $MQTT_ip -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -45,12 +45,22 @@ do
     
     tesla_ble/command)
      echo Command $msg requested;;
-    
+     case $msg in
+       trunk-open)
+        echo "Opening Trunk"
+        tesla-control -ble -key-name private.pem -key-file private.pem $msg;;
+       trunk-close)
+        echo "Closing Trunk"
+        tesla-control -ble -key-name private.pem -key-file private.pem $msg;;
+       *)
+        echo "Invalid Command Request";;
+      esac;;
+      
     tesla_ble/charging-amps)
      echo Set Charging Amps to $msg requested;;
     
     *)
-     echo Invalid MQTT topic;;
+     echo "Invalid MQTT topic";;
    esac
   done
  sleep 1
