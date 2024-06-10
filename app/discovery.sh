@@ -29,7 +29,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
    "name": "Tesla_BLE_MQTT"
   },
   "device_class": "update",
-  "name": "Deploy key",
+  "name": "Deploy Key",
   "payload_press": "deploy_key",
   "unique_id": "tesla_ble_deploy_key"
  }' 
@@ -109,7 +109,13 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
    "model": "tesla_ble_mqtt",
    "name": "Tesla_BLE_MQTT"
   },
-  "name": "Charging Amps",
-  "unique_id": "tesla_ble_charging-set-amps"
+  "name": "Charging Current",
+  "unique_id": "tesla_ble_charging-set-amps",
+  "min": "0",
+  "max": "48",
+  "mode": "box",
+  "unit_of_measurement": "Amps",
+  "retain": "true",
+  "icon": "mdi:current-ac"
  }' 
 
