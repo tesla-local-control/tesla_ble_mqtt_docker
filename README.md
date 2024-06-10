@@ -12,7 +12,7 @@ The advantage of the MQTT setup is that it can run on a device separate to your 
 I'm seeing a lot of interest already. Please submit PRs against the dev branch
 
 ## Installation and setup
-TODO, but here's a start. Read this alongside Shanker's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3
+TODO, but here's a start. Read this alongside Shankar's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3
 
 - You must already have a working MQTT broker. If you want the entities to be auto-discovered by Home Assistant (HA), then the HA MQTT Integration must already be set up and working. It is out of scope of this project to support the setup of this; it is well documented elsewhere
 
