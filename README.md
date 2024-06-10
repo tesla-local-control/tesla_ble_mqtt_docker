@@ -1,8 +1,12 @@
-# tesla_ble_docker
+# Tesla BLE MQTT Docker
 
-Work in progress, not ready for use
+Send commands via MQTT to a Tesla car using Bluetooth Low Energy (BLE)
 
-A docker version of the BLE communication method described here https://github.com/alandtse/tesla/issues/961#issuecomment-2150897886 
+If Home Assistant (HA) is already using the MQTT integration, then the various entities will be auto discovered by HA
 
-Credit to https://github.com/raphmur for the idea, and Shankar Kumarasamy's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3 for instructions regarding the method
+# Credits
+
+I got the idea for this from Raphael Murray as described here https://github.com/alandtse/tesla/issues/961#issuecomment-2150897886 
+
+The technical method was derived from Shankar Kumarasamy's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3
 
