@@ -8,6 +8,9 @@ The advantage of the MQTT setup is that it can run on a device separate to your 
 
 <a href="https://www.buymeacoffee.com/iainbullock" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
+## Contributions
+I'm seeing a lot of interest already. Please submit PRs against the dev branch
+
 ## Installation and setup
 TODO, but here's a start. Read this alongside Shanker's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3
 
