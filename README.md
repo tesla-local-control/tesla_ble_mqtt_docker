@@ -18,7 +18,7 @@ TODO, but here's a start. Read this alongside Shankar's blog https://shankarkuma
 
 - I also assume you already have Docker working on the host device, and you are familiar with basic Docker concepts and actions
 
-- Build the docker image using the Dockerfile. Alternatively you can get the image directly from Dockerhub [https://hub.docker.com/r/iainbullock/tesla_http_prox](https://hub.docker.com/r/iainbullock/tesla_ble_mqtt)
+- Build the docker image using the Dockerfile. Alternatively you can get the image directly from Dockerhub [https://hub.docker.com/r/iainbullock/tesla_ble_mqtt](https://hub.docker.com/r/iainbullock/tesla_ble_mqtt)
 
 - Make any required changes required to suit your setup in docker-compose.yml, in particular the environment variables will need changing according to your requirements
 
