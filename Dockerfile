@@ -18,7 +18,7 @@ FROM alpine:3.20.0
 RUN apk add --no-cache \
 openssl \
 bluez \
-openssh-server
+mosquitto-clients
 
 # Create various working directories
 RUN mkdir /data
