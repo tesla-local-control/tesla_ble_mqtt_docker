@@ -5,7 +5,7 @@ volumes:
 services:   
   tesla_ble:
     container_name: tesla_ble
-    image: "iainbullock/tesla_ble:latest"
+    image: "iainbullock/tesla_ble_mqtt:latest"
  
     environment:
       - TZ='Europe/London'
