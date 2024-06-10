@@ -63,9 +63,6 @@ do
        trunk-close)
         echo "Closing Trunk"
         send_command $msg;;
-       ping)
-        echo "Waking Vehicle"
-        send_command $msg;; 
        charging-start)
         echo "Start Charging"
         send_command $msg;; 
