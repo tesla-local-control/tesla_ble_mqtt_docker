@@ -48,6 +48,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "name": "Wake Vehicle",
   "payload_press": "ping",
   "unique_id": "tesla_ble_ping"
+ }'
   
 mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/trunk-open/config -m \
  '{
