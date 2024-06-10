@@ -33,7 +33,23 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "payload_press": "deploy_key",
   "unique_id": "tesla_ble_deploy_key"
  }' 
-  
+
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/wake/config -m \
+ '{
+  "command_topic": "tesla_ble/command",
+  "device": {
+   "identifiers": [
+   "tesla_ble_mqtt"
+   ],
+   "manufacturer": "iainbullock",
+   "model": "tesla_ble_mqtt",
+   "name": "Tesla_BLE_MQTT"
+  },
+  "name": "Wake Car",
+  "payload_press": "wake",
+  "unique_id": "tesla_ble_wake"
+ }' 
+ 
 mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/trunk-open/config -m \
  '{
   "command_topic": "tesla_ble/command",
