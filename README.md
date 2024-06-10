@@ -26,7 +26,7 @@ TODO, but here's a start. Read this alongside Shankar's blog https://shankarkuma
 
 - On your HA instance, navigate to the Integrations page, and click on the MQTT Integration tile. A new device called Tesla_BLE_MQTT should have automatically appeared. Click it to view the the associated entities. You should find a list of Button entities and a Number entity
 
-- If this is the first time you have run the container, press the 'Generate Keys' button. This will generate the public and private keys as per Shanker's blog
+- If this is the first time you have run the container, press the 'Generate Keys' button. This will generate the public and private keys as per Shankar's blog
 
 - Wake up your car using the Tesla App. Then press the 'Deploy Key' button. This will deploy the public key to the car. You will then need to access your car and use a Key Card to accept the public key into the car (see the blog for screenshots)
 
