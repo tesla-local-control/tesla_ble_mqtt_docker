@@ -27,7 +27,7 @@ TODO, but here's a start. Read this alongside Shanker's blog https://shankarkuma
 
 - Wake up your car using the Tesla App. Then press the 'Deploy Key' button. This will deploy the public key to the car. You will then need to access your car and use a Key Card to accept the public key into the car (see the blog for screenshots)
 
-- Press the other button entities to send various commands, or change the Charging Current. You can use the relevent service calls in HA automations if you wish
+- Press the other button entities to send various commands, or change the Charging Current. You can use the relevant service calls in HA automations if you wish
 
 - Note the car has to be awake for this to work, I can't get it to wake via BLE. You must either use the Tesla App, the Tesla HA Integration, or turn on charging power to wake the car
 
