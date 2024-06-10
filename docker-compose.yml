@@ -1,10 +1,10 @@
 volumes:
-  tesla_ble:
+  tesla_ble_mqtt:
     external: true
 
 services:   
-  tesla_ble:
-    container_name: tesla_ble
+  tesla_ble_mqtt:
+    container_name: tesla_ble_mqtt
     image: "iainbullock/tesla_ble_mqtt:latest"
  
     environment:
@@ -22,7 +22,7 @@ services:
     working_dir: /data
     
     volumes:
-      - tesla_ble:/data
+      - tesla_ble_mqtt:/data
       - /run/dbus:/run/dbus
         
     network_mode: host
