@@ -10,7 +10,10 @@ services:
     environment:
       - TZ='Europe/London'
       - TESLA_VIN=00000000000000000
-      - SSH_PORT=14222
+      - $MQTT_IP=127.0.0.1
+      - $MQTT_PORT=1883
+      - $MQTT_USER=
+      - $MQTT_PWD=
       
     stdin_open: true
     tty: true    
