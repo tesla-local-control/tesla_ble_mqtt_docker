@@ -59,7 +59,7 @@ do
      case $msg in
        wake)
         echo "Waking Car"
-        send_command $msg;;     
+        send_command "-domain vcsec $msg";;     
        trunk-open)
         echo "Opening Trunk"
         send_command $msg;;
