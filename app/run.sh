@@ -24,13 +24,15 @@ send_command() {
  done 
 }
 
-echo "Setting up auto discovery for Home Assistant"
-. /app/discovery.sh
+listen_to_ble() {
+ echo "Listening to BLE"
+ # This is temporarily looking for my car's MAC as a proof of concept
+ bluetoothctl --timeout 5 scan on | grep 40:79:12:20:20:F9
+}
 
-echo "Listening to MQTT"
-while true
-do
- mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+listen_to_mqtt() {
+ echo "Listening to MQTT"
+ mosquitto_sub -W 5 -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -83,5 +85,14 @@ do
      echo "Invalid MQTT topic";;
    esac
   done
- sleep 1
+}
+
+echo "Setting up auto discovery for Home Assistant"
+. /app/discovery.sh
+
+echo "Entering listening loop"
+while true
+do
+ listen_to_mqtt
+ listen_to_ble
 done
