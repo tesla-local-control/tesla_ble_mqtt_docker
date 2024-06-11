@@ -27,12 +27,13 @@ send_command() {
 listen_to_ble() {
  echo "Listening to BLE"
  # This is temporarily looking for my car's MAC as a proof of concept
- bluetoothctl --timeout 5 scan on | grep 40:79:12:20:20:F9
+ # bluetoothctl --timeout 5 scan on | grep 40:79:12:20:20:F9
+ sleep 5
 }
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
- mosquitto_sub -W 5 -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
