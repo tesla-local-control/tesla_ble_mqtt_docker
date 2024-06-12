@@ -10,6 +10,7 @@ services:
     environment:
       - TZ='Europe/London'
       - TESLA_VIN=00000000000000000
+      - BLE_MAC=00:00:00:00:00:00
       - MQTT_IP=127.0.0.1
       - MQTT_PORT=1883
       - MQTT_USER=
