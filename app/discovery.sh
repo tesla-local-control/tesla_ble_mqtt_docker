@@ -1,5 +1,21 @@
 #!/bin/ash
 
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ '{
+  "state_topic": "tesla_ble/binary_sensor/presence",
+  "device": {
+   "identifiers": [
+   "tesla_ble_mqtt"
+   ],
+   "manufacturer": "iainbullock",
+   "model": "tesla_ble_mqtt",
+   "name": "Tesla_BLE_MQTT"
+  },
+  "device_class": "presence",
+  "name": "Presence",
+  "unique_id": "tesla_ble_presence"
+ }'
+
 mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/generate_keys/config -m \
  '{
   "command_topic": "tesla_ble/config",
