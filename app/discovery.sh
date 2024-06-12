@@ -131,7 +131,6 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "max": "48",
   "mode": "slider",
   "unit_of_measurement": "A",
-  "retain": "true",
   "icon": "mdi:current-ac"
  }' 
 
