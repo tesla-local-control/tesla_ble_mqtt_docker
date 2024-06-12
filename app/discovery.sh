@@ -30,6 +30,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "device_class": "update",
   "name": "Generate Keys",
   "payload_press": "generate_keys",
+  "qos": 1,
   "unique_id": "tesla_ble_generate_keys"
  }' 
 
@@ -47,6 +48,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "device_class": "update",
   "name": "Deploy Key",
   "payload_press": "deploy_key",
+  "qos": 1,
   "unique_id": "tesla_ble_deploy_key"
  }' 
 
@@ -63,6 +65,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   },
   "name": "Wake Car",
   "payload_press": "wake",
+  "qos": 1,  
   "unique_id": "tesla_ble_wake"
  }' 
  
@@ -79,6 +82,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   },
   "name": "Open Trunk",
   "payload_press": "trunk-open",
+  "qos": 1,  
   "unique_id": "tesla_ble_trunk-open"
  }' 
  
@@ -95,6 +99,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   },
   "name": "Close Trunk",
   "payload_press": "trunk-close",
+  "qos": 1,  
   "unique_id": "tesla_ble_trunk-close"
  }' 
  
@@ -111,6 +116,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   },
   "name": "Start Charging",
   "payload_press": "charging-start",
+  "qos": 1,  
   "unique_id": "tesla_ble_charging-start"
  }' 
 
@@ -127,6 +133,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   },
   "name": "Stop Charging",
   "payload_press": "charging-stop",
+  "qos": 1,  
   "unique_id": "tesla_ble_charging-stop"
  }' 
 
@@ -147,6 +154,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "max": "48",
   "mode": "slider",
   "unit_of_measurement": "A",
+  "qos": 1,
   "icon": "mdi:current-ac"
  }' 
 
