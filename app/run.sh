@@ -7,6 +7,7 @@ echo "Instructions by Shankar Kumarasamy https://shankarkumarasamy.blog/2024/01/
 
 echo "Configuration Options are:"
 echo TESLA_VIN=$TESLA_VIN
+echo BLE_MAC=$BLE_MAC
 echo MQTT_IP=$MQTT_IP
 echo MQTT_PORT=$MQTT_PORT
 echo MQTT_USER=$MQTT_USER
@@ -26,14 +27,17 @@ send_command() {
 
 listen_to_ble() {
  echo "Listening to BLE"
- # This is temporarily looking for my car's MAC as a proof of concept
- # bluetoothctl --timeout 5 scan on | grep 40:79:12:20:20:F9
- sleep 5
+ bluetoothctl --timeout 2 scan on | grep $BLE_MAC
+ if [ $? -eq 0 ]; then
+   echo "$BLE_MAC presence detected"
+ else
+   echo "$BLE_MAC presence no detected"
+ fi
 }
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
- mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub --nodelay -E -c -i tesla_ble_mqtt -q 1 -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -91,9 +95,13 @@ listen_to_mqtt() {
 echo "Setting up auto discovery for Home Assistant"
 . /app/discovery.sh
 
+echo "Discard any unread MQTT messages"
+mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ 
+
 echo "Entering listening loop"
 while true
 do
  listen_to_mqtt
  listen_to_ble
+ sleep 2
 done
