@@ -30,7 +30,7 @@ echo "Setting up auto discovery for Home Assistant"
 echo "Listening to MQTT"
 while true
 do
- mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -t homeassistant/status -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -81,6 +81,10 @@ do
      sleep 1
      echo Second Amp set
      send_command "charging-set-amps $msg";;
+
+    homeassistant/status)
+     echo "Home Assistant is stopping or starting, re-run auto-discovery setup"
+     . /app/discovery.sh
     *)
      echo "Invalid MQTT topic";;
    esac
