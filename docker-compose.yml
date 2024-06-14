@@ -15,6 +15,7 @@ services:
       - MQTT_PORT=1883
       - MQTT_USER=
       - MQTT_PWD=
+      - SEND_CMD_RETRY_DELAY=5
       
     stdin_open: true
     tty: true    
