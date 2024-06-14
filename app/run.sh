@@ -40,7 +40,7 @@ listen_to_ble() {
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
- mosquitto_sub --nodelay -E -c -i tesla_ble_mqtt -q 1 -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -F "%t %p" | while read -r payload
+ mosquitto_sub --nodelay -E -c -i tesla_ble_mqtt -q 1 -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ -t homeassistant/status -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -88,7 +88,18 @@ listen_to_mqtt() {
       
     tesla_ble/charging-amps)
      echo Set Charging Amps to $msg requested
+     # https://github.com/iainbullock/tesla_ble_mqtt_docker/issues/4
+     echo First Amp set
+     send_command "charging-set-amps $msg"
+     sleep 1
+     echo Second Amp set
      send_command "charging-set-amps $msg";;
+    
+    homeassistant/status)
+     # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
+     echo "Home Assistant is stopping or starting, re-running auto-discovery setup"
+     . /app/discovery.sh;;
+     
     *)
      echo "Invalid MQTT topic";;
    esac
