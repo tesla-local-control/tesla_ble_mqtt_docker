@@ -7,7 +7,8 @@
 2. Micro SD card + SD adapter + necessary cables for OS installation (not detailed in this procedure).
 
 
-> 💡 In what follows, "RPi" refers to the device where the service will be executed.
+> [!Important]
+> In what follows, "RPi" refers to the device where the service will be executed.
 
 ### Software
 #### On the RPi
@@ -32,10 +33,20 @@
 2.
     b. Create a `tesla_ble_mqtt_docker` folder in your user directory: `cd ~ && mkdir tesla_ble_mqtt_docker && cd $_.`
 
-    Add a docker-compose.yml file: `nano docker-compose.yml`. Use the example from the repo, adjust if needed then save and exit.
-
-3. Create the Docker volume: `docker volume create tesla_ble_mqtt`
-4. Start the container: `docker-compose up -d`
+    Add a docker-compose.yml file: `nano docker-compose.yml`.
+4. Adjust `docker-compose.yml` to your needs. Pay attention to the environment variables :
+   ```yaml
+   environment:
+      - TZ='Europe/London'
+      - TESLA_VIN =<tesla VIN> # Can be found in the App.
+      - MQTT_IP=<IP of the MQTT broker> # In most cases the local IP of HA.
+      - MQTT_PORT=1883 # 1883 is the default port, do not modify unless you specified another.
+      - MQTT_USER=<MQTT username> # Use what's specified in the MQTT broker on HA.
+      - MQTT_PWD=<MQTT password> # Use what's specified in the MQTT broker on HA.
+   ```
+6. Save and exit.
+7. Create the Docker volume: `docker volume create tesla_ble_mqtt`
+8. Start the container: `docker-compose up -d`
 
     Check the logs in Portainer (or other). They should look like this:
 ```
@@ -61,7 +72,8 @@ Listening to MQTT
 
 ### Add the Key to the Vehicle
 
-> 💡 The RPi must be near the vehicle.
+> [!Important]
+> The RPi must be near the vehicle.
 
 1. Get a vehicle key card.
 2. Sit in the driver’s seat with your phone open to the Home Assistant page for the MQTT device. The vehicle screen should be active.
