@@ -84,7 +84,7 @@ do
 
     homeassistant/status)
      echo "Home Assistant is stopping or starting, re-run auto-discovery setup"
-     . /app/discovery.sh
+     . /app/discovery.sh;;
     *)
      echo "Invalid MQTT topic";;
    esac
