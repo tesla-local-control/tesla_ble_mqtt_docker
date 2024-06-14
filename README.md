@@ -1,6 +1,6 @@
 # Tesla BLE MQTT Docker
 
-Send commands via MQTT to a Tesla car using Bluetooth Low Energy (BLE)
+Send commands via MQTT to a Tesla car using Bluetooth Low Energy (BLE). https://github.com/iainbullock/tesla_ble_mqtt_docker
 
 If Home Assistant (HA) is already using the MQTT integration, then the various entities will be auto-discovered by HA
 
