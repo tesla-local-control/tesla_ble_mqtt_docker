@@ -83,7 +83,8 @@ do
      send_command "charging-set-amps $msg";;
 
     homeassistant/status)
-     echo "Home Assistant is stopping or starting, re-run auto-discovery setup"
+     # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
+     echo "Home Assistant is stopping or starting, re-running auto-discovery setup"
      . /app/discovery.sh;;
     *)
      echo "Invalid MQTT topic";;
