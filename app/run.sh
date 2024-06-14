@@ -12,6 +12,7 @@ echo MQTT_IP=$MQTT_IP
 echo MQTT_PORT=$MQTT_PORT
 echo MQTT_USER=$MQTT_USER
 echo "MQTT_PWD=Not Shown"
+echo SEND_CMD_RETRY_DELAY=$SEND_CMD_RETRY_DELAY
 
 send_command() {
  for i in $(seq 5); do
@@ -21,7 +22,7 @@ send_command() {
     echo "Ok"
     break
   fi
-  sleep 5
+  sleep $SEND_CMD_RETRY_DELAY
  done 
 }
 
