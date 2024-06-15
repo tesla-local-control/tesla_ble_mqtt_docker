@@ -82,6 +82,51 @@ listen_to_mqtt() {
        charging-stop)
         echo "Stop Charging"
         send_command $msg;;         
+       charge-port-open)
+        echo "Open Charge Port"
+        send_command $msg;;   
+       charge-port-close)
+        echo "Close Charge Port"
+        send_command $msg;;    
+       auto-seat-and-climate)
+        echo "Start Auto Seat and Climate"
+        send_command $msg;;          
+       climate-off)
+        echo "Stop Climate"
+        send_command $msg;;
+       charging-stop)
+        echo "Stop Climate"
+        send_command $msg;;
+       flash_lights)
+        echo "Flash Lights"
+        send_command $msg;;
+       frunk-open)
+        echo "Open Frunk"
+        send_command $msg;;
+       honk)
+        echo "Honk Horn"
+        send_command $msg;;
+       lock)
+        echo "Lock Car"
+        send_command $msg;; 
+       unlock)
+        echo "Unlock Car"
+        send_command $msg;;
+       unlock)
+        echo "Unlock Car"
+        send_command $msg;;
+       windows-close)
+        echo "Close Windows"
+        send_command $msg;;
+       windows-vent)
+        echo "Vent Windows"
+        send_command $msg;; 
+       product-info)
+        echo "Get Product Info (experimental)"
+        send_command $msg;;          
+       session-info)
+        echo "Get Session Info (experimental)"
+        send_command $msg;;  
        *)
         echo "Invalid Command Request";;
       esac;;
