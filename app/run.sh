@@ -61,7 +61,7 @@ listen_to_mqtt() {
        echo "Deploying public key to vehicle"  
         tesla-control -ble add-key-request public.pem owner cloud_key;;
       *)
-       echo "Invalid Configuration request";;
+       echo "Invalid Configuration request. Topic: $topic Message: $msg";;
      esac;;
     
     tesla_ble/command)
@@ -128,7 +128,7 @@ listen_to_mqtt() {
         echo "Get Session Info (experimental)"
         send_command $msg;;  
        *)
-        echo "Invalid Command Request";;
+        echo "Invalid Command Request. Topic: $topic Message: $msg";;
       esac;;
       
     tesla_ble/charging-amps)
@@ -146,7 +146,7 @@ listen_to_mqtt() {
      . /app/discovery.sh;;
      
     *)
-     echo "Invalid MQTT topic";;
+     echo "Invalid MQTT topic. Topic: $topic Message: $msg";;
    esac
   done
 }
