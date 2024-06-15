@@ -293,7 +293,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_charging-stop"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/charging-port-open/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/charge-port-open/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -305,12 +305,12 @@ setup_auto_discovery() {
     "name": "Tesla_BLE_MQTT"
    },
    "name": "Open Charge Port",
-   "payload_press": "charging-port-open",
+   "payload_press": "charge-port-open",
    "qos": 1,  
-   "unique_id": "tesla_ble_charging-port-open"
+   "unique_id": "tesla_ble_charge-port-open"
    }' 
  
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/charging-port-close/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/charge-port-close/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -322,9 +322,9 @@ setup_auto_discovery() {
     "name": "Tesla_BLE_MQTT"
    },
    "name": "Close Charge Port",
-   "payload_press": "charging-port-close",
+   "payload_press": "charge-port-close",
    "qos": 1,  
-   "unique_id": "tesla_ble_charging-port-close"
+   "unique_id": "tesla_ble_charge-port-close"
    }' 
  
  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/windows-close/config -m \
