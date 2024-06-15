@@ -514,3 +514,4 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_sentry-mode"
    }'
 
+ }
