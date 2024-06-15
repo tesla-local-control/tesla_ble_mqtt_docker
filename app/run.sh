@@ -41,6 +41,9 @@ listen_to_ble() {
 . /app/discovery.sh
 . /app/listen_to_mqtt.sh
 
+echo "Setting up auto discovery for Home Assistant"
+setup_auto_discovery 
+
 echo "Discard any unread MQTT messages"
 mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ 
 
