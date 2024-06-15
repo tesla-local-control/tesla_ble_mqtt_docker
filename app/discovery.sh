@@ -1,7 +1,7 @@
 #!/bin/ash
 
 setup_auto_discovery() {
- echo "Setting up auto discovery for Home Assistant"
+
  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
   '{
    "state_topic": "tesla_ble/binary_sensor/presence",
