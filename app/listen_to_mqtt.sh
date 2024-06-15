@@ -105,7 +105,7 @@ listen_to_mqtt() {
     homeassistant/status)
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
      echo "Home Assistant is stopping or starting, re-running auto-discovery setup"
-     . /app/discovery.sh;;
+     setup_auto_discovery;;
      
     *)
      echo "Invalid MQTT topic. Topic: $topic Message: $msg";;
