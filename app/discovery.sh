@@ -373,6 +373,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "name": "Product Info",
   "payload_press": "product-info",
   "qos": 1,  
+  "enabled_by_default": 0,
   "unique_id": "tesla_ble_product-info"
  }' 
  
@@ -390,6 +391,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "name": "Session Info",
   "payload_press": "session-info",
   "qos": 1,  
+  "enabled_by_default": 0,
   "unique_id": "tesla_ble_session-info"
  }'
  
@@ -476,7 +478,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "icon": "mdi:temperature"
  }'  
  
-mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/binary_sensor/tesla_ble/sw-heater/config -m \
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/switch/tesla_ble/sw-heater/config -m \
  '{
   "command_topic": "tesla_ble/command",
   "device": {
@@ -493,7 +495,7 @@ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassist
   "unique_id": "tesla_ble_sw_heater"
  }'
 
-mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/binary_sensor/tesla_ble/sentry-mode/config -m \
+mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/switch/tesla_ble/sentry-mode/config -m \
  '{
   "command_topic": "tesla_ble/command",
   "device": {
