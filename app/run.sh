@@ -46,7 +46,7 @@ do
        echo "Generating the public key"
        openssl ec -in private.pem -pubout > public.pem
        cat public.pem
-       echo "Keys generated, ready to deploy to vehicle. Remove any previously deployed keys from vehicle before deploying this one";;
+       echo "Keys generated, ready to deploy to vehicle. Remove any previously deployed BLE keys from vehicle before deploying this one";;
       deploy_key) 
        echo "Deploying public key to vehicle"  
         tesla-control -ble add-key-request public.pem owner cloud_key;;
