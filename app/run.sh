@@ -17,7 +17,7 @@ echo SEND_CMD_RETRY_DELAY=$SEND_CMD_RETRY_DELAY
 send_command() {
  for i in $(seq 5); do
   echo "Attempt $i/5"
-#  tesla-control -ble -key-name private.pem -key-file private.pem $1
+  tesla-control -ble -key-name private.pem -key-file private.pem $1
   if [ $? -eq 0 ]; then
     echo "Ok"
     break

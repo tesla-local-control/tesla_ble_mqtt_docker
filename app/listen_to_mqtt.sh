@@ -1,5 +1,4 @@
 #!/bin/ash
-set +r
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
@@ -114,9 +113,13 @@ listen_to_mqtt() {
      echo "Set Climate Temp to $msg requested"
      send_command "climate-set-temp $msg";;    
      
-    tesla_ble/seat-heater)
-     echo "Set Seat Heater to $msg requested"
-     send_command "seat-heater $msg";;      
+    tesla_ble/heated_seat_left)
+     echo "Set Seat heater to front-left $msg requested"
+     send_command "seat_heater front-left $msg";;      
+     
+    tesla_ble/heated_seat_right)
+     echo "Set Seat heater to front-right $msg requested"
+     send_command "seat_heater front-right $msg";;      
      
     homeassistant/status)
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
