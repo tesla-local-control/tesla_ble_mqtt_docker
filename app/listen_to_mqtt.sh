@@ -1,4 +1,5 @@
 #!/bin/ash
+set +e
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
