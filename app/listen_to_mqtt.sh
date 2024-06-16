@@ -18,7 +18,7 @@ listen_to_mqtt() {
        echo "Generating the public key"
        openssl ec -in private.pem -pubout > public.pem
        cat public.pem
-       echo "Keys generated, ready to deploy to vehicle. Remove any previously deployed keys from vehicle before deploying this one";;
+       echo "Keys generated, ready to deploy to vehicle. Remove any previously deployed BLE keys from vehicle before deploying this one";;
       deploy_key) 
        echo "Deploying public key to vehicle"  
         tesla-control -ble add-key-request public.pem owner cloud_key;;
@@ -56,10 +56,10 @@ listen_to_mqtt() {
        climate-off)
         echo "Stop Climate"
         send_command $msg;;
-       charging-stop)
+       climate-off)
         echo "Stop Climate"
         send_command $msg;;
-       flash_lights)
+       flash-lights)
         echo "Flash Lights"
         send_command $msg;;
        frunk-open)
@@ -94,14 +94,22 @@ listen_to_mqtt() {
       esac;;
       
     tesla_ble/charging-amps)
-     echo Set Charging Amps to $msg requested
+     echo "Set Charging Amps to $msg requested"
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/issues/4
      echo First Amp set
      send_command "charging-set-amps $msg"
      sleep 1
      echo Second Amp set
      send_command "charging-set-amps $msg";;
-    
+
+    tesla_ble/climate-set-temp)
+     echo "Set Climate Temp to $msg requested"
+     send_command "climate-set-temp $msg";;    
+     
+    tesla_ble/seat-heater)
+     echo "Set Seat Heater to $msg requested"
+     send_command "seat-heater $msg";;      
+     
     homeassistant/status)
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
      echo "Home Assistant is stopping or starting, re-running auto-discovery setup"
