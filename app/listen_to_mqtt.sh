@@ -1,4 +1,5 @@
 #!/bin/ash
+set +r
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
@@ -53,8 +54,8 @@ listen_to_mqtt() {
        auto-seat-and-climate)
         echo "Start Auto Seat and Climate"
         send_command $msg;;          
-       climate-off)
-        echo "Stop Climate"
+       climate-on)
+        echo "Start Climate"
         send_command $msg;;
        climate-off)
         echo "Stop Climate"
@@ -67,6 +68,9 @@ listen_to_mqtt() {
         send_command $msg;;
        honk)
         echo "Honk Horn"
+        send_command $msg;;
+       ping)
+        echo "Ping Car"
         send_command $msg;;
        lock)
         echo "Lock Car"
@@ -101,6 +105,10 @@ listen_to_mqtt() {
      sleep 1
      echo Second Amp set
      send_command "charging-set-amps $msg";;
+
+    tesla_ble/charging-set-limit)
+     echo "Set Charging Limit to $msg requested"
+     send_command "charging-set-limit $msg";;    
 
     tesla_ble/climate-set-temp)
      echo "Set Climate Temp to $msg requested"
