@@ -18,7 +18,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_presence"
   }'
   
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/generate_keys/config -m \
   '{
    "command_topic": "tesla_ble/config",
    "device": {
@@ -36,7 +36,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_generate_keys"
   }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/deploy_key/config -m \
   '{
    "command_topic": "tesla_ble/config",
    "device": {
@@ -54,7 +54,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_deploy_key"
   }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/scan_bluetooth/config -m \
   '{
    "command_topic": "tesla_ble/config",
    "device": {
@@ -72,7 +72,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_scan_bluetooth"
   }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/wake/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -89,7 +89,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_wake"
   }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/flash-lights/config -m \ 
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -106,7 +106,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_flash_lights"
   }'  
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/honk/config -m \ 
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -123,7 +123,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_honk"
   }' 
  
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/lock/config -m \ 
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -140,7 +140,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_lock"
   }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/unlock/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -157,7 +157,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_unlock"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/auto_seat-climate/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -174,7 +174,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_auto_seat-climate"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/climate-off/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -191,7 +191,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_climate-off"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/climate-on/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -208,7 +208,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_climate-on"
    }'
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/trunk-open/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -225,7 +225,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_trunk-open"
    }' 
  
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/trunk-close/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -242,7 +242,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_trunk-close"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/frunk-open/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -259,7 +259,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_frunk-open"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/charging-start/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -276,7 +276,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_charging-start"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/charging-stop/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -293,7 +293,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_charging-stop"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/charge-port-open/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -310,7 +310,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_charge-port-open"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/charge-port-close/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -327,7 +327,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_charge-port-close"
    }' 
  
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/windows-close/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -344,7 +344,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_windows-close"
    }'  
  
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/windows-vent/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -361,7 +361,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_windows-vent"
    }'  
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/product-info/config -m \
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -379,7 +379,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_product-info"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/button/tesla_ble/session-info/config -m \ 
   '{
    "command_topic": "tesla_ble/command",
    "device": {
@@ -397,7 +397,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_session-info"
    }'
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/number/tesla_ble/charging-set-amps/config -m \
   '{
    "command_topic": "tesla_ble/charging-amps",
    "device": {
@@ -418,7 +418,7 @@ setup_auto_discovery() {
    "icon": "mdi:current-ac"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/number/tesla_ble/charging-set-limit/config -m \
   '{
    "command_topic": "tesla_ble/charging-set-limit",
    "device": {
@@ -439,7 +439,7 @@ setup_auto_discovery() {
    "icon": "mdi:battery-90"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/number/tesla_ble/climate-set-temp/config -m \ 
   '{
    "command_topic": "tesla_ble/climate-set-temp",
    "device": {
@@ -460,7 +460,7 @@ setup_auto_discovery() {
    "icon": "mdi:temperature"
    }' 
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \ 
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/number/tesla_ble/seat-heater/config -m \ 
   '{
    "command_topic": "tesla_ble/seat-heater",
    "device": {
@@ -480,7 +480,7 @@ setup_auto_discovery() {
    "icon": "mdi:temperature"
    }'  
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/switch/tesla_ble/sw-heater/config -m \
   '{
    "command_topic": "tesla_ble/sw-heater",
    "device": {
@@ -497,7 +497,7 @@ setup_auto_discovery() {
    "unique_id": "tesla_ble_sw_heater"
    }'
 
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/binary_sensor/tesla_ble/presence/config -m \
+ mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t homeassistant/switch/tesla_ble/sentry-mode/config -m \
   '{
    "command_topic": "tesla_ble/sentry-mode",
    "device": {
