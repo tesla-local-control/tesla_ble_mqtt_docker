@@ -493,61 +493,61 @@ setup_auto_discovery() {
    "icon": "mdi:car-seat-heater",
    "unique_id": "tesla_ble_heated_seat_right"
    }'
-  /* Entities which are seemingly not useful for BLE commands   
-  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/ping/config -m \
-  '{
-   "command_topic": "tesla_ble/command",
-   "device": {
-    "identifiers": [
-    "tesla_ble_mqtt"
-    ],
-    "manufacturer": "iainbullock",
-    "model": "tesla_ble_mqtt",
-    "name": "Tesla_BLE_MQTT"
-   },
-   "name": "Ping",
-   "payload_press": "ping",
-   "enabled_by_default": 0,
-   "qos": 1,
-   "unique_id": "tesla_ble_ping"
-  }'
-
-  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/product-info/config -m \
-  '{
-   "command_topic": "tesla_ble/command",
-   "device": {
-    "identifiers": [
-    "tesla_ble_mqtt"
-    ],
-    "manufacturer": "iainbullock",
-    "model": "tesla_ble_mqtt",
-    "name": "Tesla_BLE_MQTT"
-   },
-   "name": "Product Info",
-   "payload_press": "product-info",
-   "qos": 1,
-   "enabled_by_default": 0,
-   "unique_id": "tesla_ble_product-info"
-   }'
-
- mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/session-info/config -m \
-  '{
-   "command_topic": "tesla_ble/command",
-   "device": {
-    "identifiers": [
-    "tesla_ble_mqtt"
-    ],
-    "manufacturer": "iainbullock",
-    "model": "tesla_ble_mqtt",
-    "name": "Tesla_BLE_MQTT"
-   },
-   "name": "Session Info",
-   "payload_press": "session-info",
-   "qos": 1,
-   "enabled_by_default": 0,
-   "unique_id": "tesla_ble_session-info"
-   }'
- */
-
+   
+# Entities which are seemingly not useful for BLE commands   
+#  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/ping/config -m \
+#  '{
+#   "command_topic": "tesla_ble/command",
+#   "device": {
+#    "identifiers": [
+#    "tesla_ble_mqtt"
+#    ],
+#    "manufacturer": "iainbullock",
+#    "model": "tesla_ble_mqtt",
+#    "name": "Tesla_BLE_MQTT"
+#   },
+#   "name": "Ping",
+#   "payload_press": "ping",
+#   "enabled_by_default": 0,
+#   "qos": 1,
+#   "unique_id": "tesla_ble_ping"
+#  }'
+#
+#  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/product-info/config -m \
+#  '{
+#   "command_topic": "tesla_ble/command",
+#   "device": {
+#    "identifiers": [
+#    "tesla_ble_mqtt"
+#    ],
+#    "manufacturer": "iainbullock",
+#    "model": "tesla_ble_mqtt",
+#    "name": "Tesla_BLE_MQTT"
+#   },
+#   "name": "Product Info",
+#   "payload_press": "product-info",
+#   "qos": 1,
+#   "enabled_by_default": 0,
+#   "unique_id": "tesla_ble_product-info"
+#   }'
+#
+# mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t homeassistant/button/tesla_ble/session-info/config -m \
+#  '{
+#   "command_topic": "tesla_ble/command",
+#   "device": {
+#    "identifiers": [
+#    "tesla_ble_mqtt"
+#    ],
+#    "manufacturer": "iainbullock",
+#    "model": "tesla_ble_mqtt",
+#    "name": "Tesla_BLE_MQTT"
+#   },
+#   "name": "Session Info",
+#   "payload_press": "session-info",
+#   "qos": 1,
+#   "enabled_by_default": 0,
+#   "unique_id": "tesla_ble_session-info"
+#   }'
+# 
  }
 
