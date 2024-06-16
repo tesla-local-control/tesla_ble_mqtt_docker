@@ -115,11 +115,11 @@ listen_to_mqtt() {
      
     tesla_ble/heated_seat_left)
      echo "Set Seat heater to front-left $msg requested"
-     send_command "seat_heater front-left $msg";;      
+     send_command "seat-heater front-left $msg";;      
      
     tesla_ble/heated_seat_right)
      echo "Set Seat heater to front-right $msg requested"
-     send_command "seat_heater front-right $msg";;      
+     send_command "seat-heater front-right $msg";;      
      
     homeassistant/status)
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
