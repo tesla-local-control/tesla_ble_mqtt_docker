@@ -10,14 +10,14 @@ echo TESLA_VIN=$TESLA_VIN
 echo BLE_MAC=$BLE_MAC
 echo MQTT_IP=$MQTT_IP
 echo MQTT_PORT=$MQTT_PORT
-echo MQTT_USER=$MQTT_USER
+echo MQTT_USER=${MQTT_USER}
 echo "MQTT_PWD=Not Shown"
 echo SEND_CMD_RETRY_DELAY=$SEND_CMD_RETRY_DELAY
 
 send_command() {
  for i in $(seq 5); do
   echo "Sending command $@, attempt $i/5"
-  tesla-control -ble -key-name private.pem -key-file private.pem $@
+#  tesla-control -ble -key-name private.pem -key-file private.pem $@
   if [ $? -eq 0 ]; then
     echo "Ok"
     break
@@ -31,10 +31,10 @@ listen_to_ble() {
  bluetoothctl --timeout 2 scan on | grep $BLE_MAC
  if [ $? -eq 0 ]; then
    echo "$BLE_MAC presence detected"
-   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t tesla_ble/binary_sensor/presence -m ON
+   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/binary_sensor/presence -m ON
  else
    echo "$BLE_MAC presence not detected"
-   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "$MQTT_USER" -P "$MQTT_PWD" -t tesla_ble/binary_sensor/presence -m OFF
+   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/binary_sensor/presence -m OFF
  fi
 }
 
@@ -45,7 +45,7 @@ echo "Setting up auto discovery for Home Assistant"
 setup_auto_discovery 
 
 echo "Discard any unread MQTT messages"
-mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PWD -t tesla_ble/+ 
+mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/+ 
 
 echo "Entering listening loop"
 while true
