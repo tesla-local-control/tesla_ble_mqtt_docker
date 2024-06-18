@@ -37,11 +37,14 @@ echo "Include subroutines"
 . /app/discovery.sh
 . /app/listen_to_mqtt.sh
 
+echo "Listening for Home Assistant Start (in background)"
+listen_for_HA_start &
+
 echo "Setting up auto discovery for Home Assistant"
 setup_auto_discovery 
 
 echo "Discard any unread MQTT messages"
-mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/+ 
+mosquitto_sub -E -i STESLA_VIN -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/+ 
 
 echo "Entering listening loop"
 while true

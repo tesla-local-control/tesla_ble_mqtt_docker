@@ -3,7 +3,7 @@ set +e
 
 listen_to_mqtt() {
  echo "Listening to MQTT"
- mosquitto_sub --nodelay -E -c -i tesla_ble_mqtt -q 1 -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/+ -t homeassistant/status -F "%t %p" | while read -r payload
+ mosquitto_sub --nodelay -E -c -i $TESLA_VIN -q 1 -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/+ -F "%t %p" | while read -r payload
   do
    topic=$(echo "$payload" | cut -d ' ' -f 1)
    msg=$(echo "$payload" | cut -d ' ' -f 2-)
@@ -133,14 +133,33 @@ listen_to_mqtt() {
      echo "Set Seat heater to front-right $msg requested"
      send_command "seat-heater front-right $msg";;      
      
-    homeassistant/status)
-     # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
-     echo "Home Assistant is stopping or starting, re-running auto-discovery setup"
-     setup_auto_discovery;;
-     
     *)
      echo "Invalid MQTT topic. Topic: $topic Message: $msg";;
    esac
   done
 }
 
+listen_for_HA_start() {
+ mosquitto_sub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t homeassistant/status -F "%t %p" | while read -r payload
+  do
+   topic=$(echo "$payload" | cut -d ' ' -f 1)
+   msg=$(echo "$payload" | cut -d ' ' -f 2-)
+   echo "Received HA Status message: $topic $msg"
+   case $topic in
+
+    homeassistant/status)
+     case $msg in
+       offline)
+        echo "Home Assistant is stopping";;
+       online)
+        # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
+        echo "Home Assistant is starting, re-running MQTT auto-discovery"
+        setup_auto_discovery;;
+       *)
+        echo "Invalid Command Request. Topic: $topic Message: $msg";;
+     esac;;
+    *)
+     echo "Invalid MQTT topic. Topic: $topic Message: $msg";;
+   esac
+  done
+}
