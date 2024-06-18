@@ -14,15 +14,20 @@ listen_to_mqtt() {
      case $msg in
       generate_keys)
        echo "Generating the private key"
-       openssl ecparam -genkey -name prime256v1 -noout > private.pem
-       cat private.pem
+       openssl ecparam -genkey -name prime256v1 -noout > /share/tesla_ble_mqtt/private.pem
+       cat /share/tesla_ble_mqtt/private.pem
        echo "Generating the public key"
-       openssl ec -in private.pem -pubout > public.pem
-       cat public.pem
-       echo "Keys generated, ready to deploy to vehicle. Remove any previously deployed BLE keys from vehicle before deploying this one";;
+       openssl ec -in private.pem -pubout > /share/tesla_ble_mqtt/public.pem
+       cat /share/tesla_ble_mqtt/public.pem
+       echo "KEYS GENERATED. Next:
+       1/ Remove any previously deployed BLE keys from vehicle before deploying this one
+       2/ Wake the car up with your Tesla App
+       3/ Push the button 'Deploy Key'";;
+
       deploy_key) 
        echo "Deploying public key to vehicle"  
-        tesla-control -ble add-key-request public.pem owner cloud_key;;
+       send_key;;
+
       *)
        echo "Invalid Configuration request. Topic: $topic Message: $msg";;
      esac;;
@@ -51,9 +56,6 @@ listen_to_mqtt() {
        charge-port-close)
         echo "Close Charge Port"
         send_command $msg;;    
-       auto-seat-and-climate)
-        echo "Start Auto Seat and Climate"
-        send_command $msg;;          
        climate-on)
         echo "Start Climate"
         send_command $msg;;
@@ -100,11 +102,20 @@ listen_to_mqtt() {
     tesla_ble/charging-amps)
      echo "Set Charging Amps to $msg requested"
      # https://github.com/iainbullock/tesla_ble_mqtt_docker/issues/4
-     echo First Amp set
-     send_command "charging-set-amps $msg"
-     sleep 1
-     echo Second Amp set
-     send_command "charging-set-amps $msg";;
+     if [ $msg -gt 4 ]; then
+     echo "Set amps"
+      send_command "charging-set-amps $msg"
+     else
+      echo "First Amp set"
+      send_command "charging-set-amps $msg"
+      sleep 1
+      echo "Second Amp set"
+      send_command "charging-set-amps $msg"
+     fi;;
+
+    tesla_ble/auto-seat-and-climate)
+     echo "Start Auto Seat and Climate"
+     send_command "auto-seat-and-climate LR on";;
 
     tesla_ble/charging-set-limit)
      echo "Set Charging Limit to $msg requested"

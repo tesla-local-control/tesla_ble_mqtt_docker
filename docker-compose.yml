@@ -21,10 +21,10 @@ services:
     tty: true    
     
     entrypoint: "/app/run.sh"
-    working_dir: /data
+    working_dir: /share/tesla_ble_mqtt
     
     volumes:
-      - tesla_ble_mqtt:/data
+      - tesla_ble_mqtt:/share/tesla_ble_mqtt
       - /run/dbus:/run/dbus
         
     network_mode: host

@@ -159,7 +159,7 @@ setup_auto_discovery() {
 
  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t homeassistant/button/tesla_ble/auto-seat-climate/config -m \
   '{
-   "command_topic": "tesla_ble/command",
+   "command_topic": "tesla_ble/auto-seat-and-climate",
    "device": {
     "identifiers": [
     "tesla_ble_mqtt"
