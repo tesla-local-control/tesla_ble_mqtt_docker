@@ -20,7 +20,7 @@ listen_to_mqtt() {
        openssl ecparam -genkey -name prime256v1 -noout > /share/tesla_ble_mqtt/${vin}_private.pem
        cat /share/tesla_ble_mqtt/${vin}_private.pem
        echo "Generating the public key"
-       openssl ec -in /share/tesla_ble_mqtt/$vin_private.pem -pubout > /share/tesla_ble_mqtt/${vin}_public.pem
+       openssl ec -in /share/tesla_ble_mqtt/${vin}_private.pem -pubout > /share/tesla_ble_mqtt/${vin}_public.pem
        cat /share/tesla_ble_mqtt/${vin}_public.pem
        echo "KEYS GENERATED. Next:
        1/ Remove any previously deployed BLE keys from vehicle before deploying this one

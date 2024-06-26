@@ -21,17 +21,17 @@ send_command() {
 
 listen_to_ble() {
  echo "Listening to BLE"
- echo "Needs updating for multicar"
+ echo "Needs updating for multi-car, only supports TESLA_VIN1 at this time. Doesn't support deprecated TESLA_VIN usage"
  set +e
  bluetoothctl --timeout 2 scan on | grep $BLE_MAC
  EXIT_STATUS=$?
  set -e
  if [ $EXIT_STATUS -eq 0 ]; then
    echo "$BLE_MAC presence detected"
-   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN/binary_sensor/presence -m ON
+   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN1/binary_sensor/presence -m ON
  else
    echo "$BLE_MAC presence not detected"
-   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN/binary_sensor/presence -m OFF
+   mosquitto_pub --nodelay -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN1/binary_sensor/presence -m OFF
  fi
 }
 

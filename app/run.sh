@@ -17,8 +17,6 @@ if [ -n "${HASSIO_TOKEN:-}" ]; then
   SEND_CMD_RETRY_DELAY="$(bashio::config 'send_cmd_retry_delay')"; export SEND_CMD_RETRY_DELAY
 fi
 
-#TESLA_VIN=$TESLA_VIN1
-
 echo "Configuration Options are:"
 if [ "$TESLA_VIN" ]; then
  echo TESLA_VIN=$TESLA_VIN
@@ -90,6 +88,6 @@ echo "Entering listening loop"
 while true
 do
  listen_to_mqtt
-# listen_to_ble
+ listen_to_ble
  sleep 2
 done
