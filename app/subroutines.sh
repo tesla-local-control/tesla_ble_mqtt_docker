@@ -57,7 +57,7 @@ scan_bluetooth(){
  BLE_ADVERT=S${VIN_HASH:0:16}C
  echo "Calculating BLE Advert ${BLE_ADVERT} from VIN"
  echo "Scanning Bluetooth for $BLE_ADVERT, wait 10 secs" 
- #bluetoothctl --timeout 10 scan on | grep $BLE_ADVERT
+ bluetoothctl --timeout 10 scan on | grep $BLE_ADVERT
  echo "More work needed on this"
 }
 

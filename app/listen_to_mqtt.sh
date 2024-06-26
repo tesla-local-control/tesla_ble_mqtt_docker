@@ -17,11 +17,11 @@ listen_to_mqtt() {
      case $msg in
       generate_keys)
        echo "Generating the private key"
-       openssl ecparam -genkey -name prime256v1 -noout > /share/tesla_ble_mqtt/$vin_private.pem
-       cat /share/tesla_ble_mqtt/$vin_private.pem
+       openssl ecparam -genkey -name prime256v1 -noout > /share/tesla_ble_mqtt/${vin}_private.pem
+       cat /share/tesla_ble_mqtt/${vin}_private.pem
        echo "Generating the public key"
-       openssl ec -in /share/tesla_ble_mqtt/$vin_private.pem -pubout > /share/tesla_ble_mqtt/$vin_public.pem
-       cat /share/tesla_ble_mqtt/$vin_public.pem
+       openssl ec -in /share/tesla_ble_mqtt/$vin_private.pem -pubout > /share/tesla_ble_mqtt/${vin}_public.pem
+       cat /share/tesla_ble_mqtt/${vin}_public.pem
        echo "KEYS GENERATED. Next:
        1/ Remove any previously deployed BLE keys from vehicle before deploying this one
        2/ Wake the car up with your Tesla App
@@ -87,9 +87,6 @@ listen_to_mqtt() {
        unlock)
         echo "Unlock Car"
         send_command $vin $msg;;
-       unlock)
-        echo "Unlock Car"
-        send_command $vin $msg;;
        windows-close)
         echo "Close Windows"
         send_command $vin $msg;;
@@ -130,7 +127,7 @@ listen_to_mqtt() {
 
     climate-set-temp)
      echo "Set Climate Temp to $msg requested"
-     send_command $vin "climate-set-temp $msg";;    
+     send_command $vin "climate-set-temp ${msg}C";;    
      
     heated_seat_left)
      echo "Set Seat heater to front-left $msg requested"
@@ -161,7 +158,7 @@ listen_for_HA_start() {
        online)
         # https://github.com/iainbullock/tesla_ble_mqtt_docker/discussions/6
         echo "Home Assistant is starting, re-running MQTT auto-discovery"
-        if [ " $TESLA_VIN" ]; then
+        if [ "$TESLA_VIN" ]; then
          setup_auto_discovery $TESLA_VIN
         else
          if [ "$TESLA_VIN1" ] && [ $TESLA_VIN1 != "00000000000000000" ]; then
