@@ -1,3 +1,9 @@
+# This project is moving
+
+There are now three of us working on a common project to implement this, which will improve functionality, quality, and responsiveness to issues. 
+We haven't launched the first release yet, but it will be soon. Check it out here https://github.com/tesla-local-control/tesla-local-control-addon
+I will bring this project to a working conclusion, and retire it once the first release goes live at the above repository
+ 
 # Tesla BLE MQTT Docker
 
 Send commands via MQTT to a Tesla car using Bluetooth Low Energy (BLE)
