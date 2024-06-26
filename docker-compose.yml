@@ -9,20 +9,24 @@ services:
  
     environment:
       - TZ='Europe/London'
-      - TESLA_VIN=00000000000000000
+      - TESLA_VIN1=00000000000000000
+      - TESLA_VIN2=00000000000000000
+      - TESLA_VIN3=00000000000000000
+      - BLE_MAC=00:00:00:00:00:00
       - MQTT_IP=127.0.0.1
       - MQTT_PORT=1883
       - MQTT_USER=
       - MQTT_PWD=
+      - SEND_CMD_RETRY_DELAY=5
       
     stdin_open: true
     tty: true    
     
     entrypoint: "/app/run.sh"
-    working_dir: /data
+    working_dir: /share/tesla_ble_mqtt
     
     volumes:
-      - tesla_ble_mqtt:/data
+      - tesla_ble_mqtt:/share/tesla_ble_mqtt
       - /run/dbus:/run/dbus
         
     network_mode: host
