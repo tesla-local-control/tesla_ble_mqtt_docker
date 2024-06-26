@@ -2,7 +2,7 @@
 
 send_command() {
  vin=$1
- shift 
+ shift
  for i in $(seq 5); do
   echo "Sending command $@ to $vin, attempt $i/5"
   set +e
@@ -15,8 +15,8 @@ send_command() {
   else
    echo "Error calling tesla-control, exit code=$EXIT_STATUS - will retry in $SEND_CMD_RETRY_DELAY seconds"
    sleep $SEND_CMD_RETRY_DELAY
-  fi  
- done 
+  fi
+ done
 }
 
 listen_to_ble() {
@@ -56,7 +56,7 @@ scan_bluetooth(){
  VIN_HASH=`echo -n ${TESLA_VIN} | sha1sum`
  BLE_ADVERT=S${VIN_HASH:0:16}C
  echo "Calculating BLE Advert ${BLE_ADVERT} from VIN"
- echo "Scanning Bluetooth for $BLE_ADVERT, wait 10 secs" 
+ echo "Scanning Bluetooth for $BLE_ADVERT, wait 10 secs"
  bluetoothctl --timeout 10 scan on | grep $BLE_ADVERT
  echo "More work needed on this"
 }

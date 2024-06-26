@@ -4,20 +4,20 @@ setup_auto_discovery() {
  echo "Setting up HA auto discovery for $1"
 
  if [ "$TESLA_VIN" ]; then
-  # Deprecated topic / entity / device names	
+  # Deprecated topic / entity / device name
   DEV_ID=tesla_ble
   DEV_NAME=Tesla_BLE_MQTT
- else	 
+ else
   DEV_ID=tesla_ble_mqtt_$1
   DEV_NAME=Tesla_BLE_MQTT_$1
- fi 
+ fi
 
  TOPIC_ROOT=tesla_ble_mqtt/$1
 
  echo "DEV_ID=$DEV_ID"
  echo "DEV_NAME=$DEV_NAME"
  echo "TOPIC_ROOT=$TOPIC_ROOT"
- 
+
  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t homeassistant/binary_sensor/${DEV_ID}/presence/config -m \
   '{
    "state_topic": "'${TOPIC_ROOT}'/binary_sensor/presence",
@@ -509,8 +509,8 @@ setup_auto_discovery() {
    "icon": "mdi:car-seat-heater",
    "unique_id": "'${DEV_ID}'_heated_seat_right"
    }'
-   
-# Entities which are seemingly not useful for BLE commands   
+
+# Entities which are seemingly not useful for BLE commands
 #  mosquitto_pub -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t homeassistant/button/${DEV_ID}/ping/config -m \
 #  '{
 #   "command_topic": "'${TOPIC_ROOT}'/command",
@@ -564,6 +564,6 @@ setup_auto_discovery() {
 #   "enabled_by_default": 0,
 #   "unique_id": "'${DEV_ID}'_session-info"
 #   }'
-# 
+#
  }
 
