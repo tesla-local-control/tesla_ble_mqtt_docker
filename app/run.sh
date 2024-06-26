@@ -54,7 +54,7 @@ if [ -f /share/tesla_ble_mqtt/private.pem ]; then
    echo "Legacy keys, MQTT topics, and Home Assistant entity names will now be migrated"
    echo "Upon migration you will need to manually update references to these entities in HA if used in cards or automations"
     delete_legacies
-  fi 
+  fi
 fi
 
 echo "Setting up auto discovery for Home Assistant"
@@ -63,7 +63,7 @@ if [ "$TESLA_VIN" ]; then
 else
  if [ "$TESLA_VIN1" ] && [ $TESLA_VIN1 != "00000000000000000" ]; then
   setup_auto_discovery $TESLA_VIN1
- fi 
+ fi
  if [ "$TESLA_VIN2" ] && [ $TESLA_VIN2 != "00000000000000000" ]; then
   setup_auto_discovery $TESLA_VIN2
  fi
@@ -77,11 +77,11 @@ listen_for_HA_start &
 
 echo "Discarding any unread MQTT messages"
 if [ "$TESLA_VIN" ]; then
- mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/$TESLA_VIN/+ 
+ mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble/$TESLA_VIN/+
 else
- mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN1/+ 
- mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN2/+ 
- mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN3/+ 
+ mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN1/+
+ mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN2/+
+ mosquitto_sub -E -i tesla_ble_mqtt -h $MQTT_IP -p $MQTT_PORT -u "${MQTT_USER}" -P "${MQTT_PWD}" -t tesla_ble_mqtt/$TESLA_VIN3/+
 fi
 
 echo "Entering listening loop"

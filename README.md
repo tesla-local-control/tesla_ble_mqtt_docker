@@ -1,16 +1,16 @@
 # This project is moving
 
-There are now three of us working on a common project to implement this, which will improve functionality, quality, and responsiveness to issues. 
+There are now three of us working on a common project to implement this, which will improve functionality, quality, and responsiveness to issues.
 We haven't launched the first release yet, but it will be soon. Check it out here https://github.com/tesla-local-control/tesla-local-control-addon
 I will bring this project to a working conclusion, and retire it once the first release goes live at the above repository
- 
+
 # Tesla BLE MQTT Docker
 
 Send commands via MQTT to a Tesla car using Bluetooth Low Energy (BLE). https://github.com/iainbullock/tesla_ble_mqtt_docker
 
 If Home Assistant (HA) is already using the MQTT integration, then the various entities will be auto-discovered by HA
 
-The advantage of the MQTT setup is that it can run on a device separate to your HA server, e.g. Raspberry Pi located close to where you park your car 
+The advantage of the MQTT setup is that it can run on a device separate to your HA server, e.g. Raspberry Pi located close to where you park your car
 
 <a href="https://www.buymeacoffee.com/iainbullock" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
@@ -42,7 +42,7 @@ TODO, but here's a start. Read this alongside Shankar's blog https://shankarkuma
 
 ## Credits
 
-I got the idea for this from Raphael Murray as described here https://github.com/alandtse/tesla/issues/961#issuecomment-2150897886 
+I got the idea for this from Raphael Murray as described here https://github.com/alandtse/tesla/issues/961#issuecomment-2150897886
 
 The technical method was derived from Shankar Kumarasamy's blog https://shankarkumarasamy.blog/2024/01/28/tesla-developer-api-guide-ble-key-pair-auth-and-vehicle-commands-part-3
 
