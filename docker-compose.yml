@@ -2,35 +2,35 @@ volumes:
   tesla_ble_mqtt:
     external: true
 
-services:   
+services:
   tesla_ble_mqtt:
     container_name: tesla_ble_mqtt
-    image: "iainbullock/tesla_ble_mqtt:latest"
- 
-    environment:
-      - TZ='Europe/London'
-      - TESLA_VIN1=00000000000000000
-      - TESLA_VIN2=00000000000000000
-      - TESLA_VIN3=00000000000000000
-      - BLE_MAC=00:00:00:00:00:00
-      - MQTT_IP=127.0.0.1
-      - MQTT_PORT=1883
-      - MQTT_USER=
-      - MQTT_PWD=
-      - SEND_CMD_RETRY_DELAY=5
-      
+    image: "tesla-local-control/tesla_ble_mqtt:latest"
+
+
+    # Configuration Settings have been moved to the "env" file
+    env_file:
+      - env
+
+    network_mode: host
+
+    # TODO:  Needed to open the Bluetooth dongle to send commands to the car
+    privileged: true
+    # TODO: Needed to open the Bluetooth device
+    tty: true
+
+    # TODO : Why?
     stdin_open: true
-    tty: true    
-    
-    entrypoint: "/app/run.sh"
+
+    # TODO : still valid?
     working_dir: /share/tesla_ble_mqtt
-    
+
     volumes:
       - tesla_ble_mqtt:/share/tesla_ble_mqtt
       - /run/dbus:/run/dbus
-        
-    network_mode: host
-    privileged: true 
+
+    # TODO: most likely not needed to overwrite the image's default
+    entrypoint: "/app/run.sh"
 
     restart: no
-    #restart: unless-stopped  
+    #restart: unless-stopped
