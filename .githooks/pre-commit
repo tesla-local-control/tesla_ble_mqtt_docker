@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+export NOCOLOR='\033[0m'
+export GREEN='\033[0;32m'
+export CYAN='\033[0;36m'
+export YELLOW='\033[1;32m'
+export MAGENTA='\033[0;35m'
+export RED='\033[0;31m'
+
+protected_branch='main'
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Find and fix trailing white space and tabs
+# Replace tabs with white space
+# Bypass it with the --no-verify option to git-commit
+#
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  against=HEAD
+else
+  # Initial commit: diff against an empty tree object
+  against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+SAVEIFS="$IFS"
+# only use new-line character as separator, introduces EOL-bug?
+IFS='
+'
+# Find files with trailing white space
+for FILE in $(
+  git diff-index --check --cached $against -- |
+    sed '/^[+-]/d' |
+    (sed -r 's/:[0-9]+:.*//' || sed -E 's/:[0-9]+:.*//') |
+    uniq
+); do
+  # replace whitespace-characters with nothing
+  # if first execution of sed-command fails, try second one (Mac OS X version)
+  (
+    sed -i -e 's/[ 	]*$//g' -e 's/	/        /g' $FILE >/dev/null 2>&1 ||
+      sed -i '' -e 's/[ 	]*$//g' -e 's/	/        /g' $FILE
+  ) &&
+    # (re-)add files that have been altered to Git commit-tree
+    #   when change was a [:space:]-character @EOL|EOF git-history becomes weird...
+    git add "$FILE"
+done
+# restore $IFS
+IFS="$SAVEIFS"
+
+# Prevent commit on main branch
+#
+if [ $protected_branch = $current_branch ]; then
+  echo -e "${YELLOW}You should not commit to branch ${RED}$protected_branch${NOCOLOR}"
+  echo -e "To bypass the protection, add ${GREEN}--no-verify${NOCOLOR} to the git commit command"
+  exit 1 # push will not execute
+fi
+
+# Exit script with the exit-code of git's check for white space characters
+exec git diff-index --check --cached $against --
