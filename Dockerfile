@@ -25,7 +25,7 @@ RUN apk add --no-cache \
 RUN mkdir /data
 
 # Copy project files into required locations
-COPY app liblogging.sh libproduct.sh /app/
+COPY app liblog.sh libproduct.sh /app/
 
 # Copy binaries from build stage
 COPY --from=build /app/bin/tesla-control /usr/bin/

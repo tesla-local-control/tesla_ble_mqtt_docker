@@ -58,7 +58,7 @@ function initProduct() {
   export COLOR=${COLOR:=true}
 
   # Source Logging Library
-  . /app/liblogging.sh
+  . /app/liblog.sh
 
   validateEnvVars
 }
