@@ -43,6 +43,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
+          build-args: |
+            BUILDKIT_CONTEXT_KEEP_GIT_DIR=true
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
