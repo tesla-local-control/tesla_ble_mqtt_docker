@@ -12,8 +12,6 @@ services:
     env_file:
       - stack.env
 
-    network_mode: host
-
     # Needed to open the Bluetooth dongle to send commands to the car
     network_mode: host
     privileged: true
