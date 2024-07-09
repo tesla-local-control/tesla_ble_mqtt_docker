@@ -30,4 +30,4 @@ COPY app liblog.sh libproduct.sh /app/
 # Copy binaries from build stage
 COPY --from=build /app/bin/tesla-control /usr/bin/
 
-CMD [ "/app/run.sh" ]
+#CMD [ "/app/run.sh" ]
