@@ -8,9 +8,9 @@ services:
     image: "tesla-local-control/tesla_ble_mqtt:latest"
 
 
-    # Configuration Settings have been moved to the "env" file
+    # Configuration Settings have been moved to the "stack.env" file
     env_file:
-      - env
+      - stack.env
 
     network_mode: host
 
