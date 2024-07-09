@@ -17,7 +17,7 @@ FROM alpine:3.20.0
 # install dependencies
 RUN apk add --no-cache \
   bluez \
-  bluez-depricated \
+  bluez-deprecated \
   mosquitto-clients \
   openssl
 
