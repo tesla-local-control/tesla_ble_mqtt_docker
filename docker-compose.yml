@@ -7,7 +7,6 @@ services:
     container_name: tesla_ble_mqtt
     image: "iainbullock/tesla_ble_mqtt:latest"
 
-
     # Configuration Settings have been moved to the "stack.env" file
     env_file:
       - stack.env
