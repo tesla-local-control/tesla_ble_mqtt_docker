@@ -16,15 +16,18 @@ FROM alpine:3.20.0
 
 # install dependencies
 RUN apk add --no-cache \
-openssl \
-bluez \
-mosquitto-clients
+  bluez \
+  bluez-depricated \
+  mosquitto-clients \
+  openssl
 
 # Create various working directories
 RUN mkdir /data
 
 # Copy project files into required locations
-COPY app /app
+COPY app liblog.sh libproduct.sh /app/
 
 # Copy binaries from build stage
 COPY --from=build /app/bin/tesla-control /usr/bin/
+
+CMD [ "/app/run.sh" ]
