@@ -15,17 +15,9 @@ services:
     network_mode: host
     privileged: true
 
-    # TODO: Needed to open the Bluetooth device. 
-    # Reply: I think it is needed to get a container shell which is a useful diagnostic
+    # Allow opening of a shell in container
     tty: true
-
-    # TODO : Why?
-    # Reply: I think it is needed to get a container shell which is a useful diagnostic
     stdin_open: true
-
-    # TODO : still valid?
-    # Reply: It seems to work after I remmed it out
-    # working_dir: /share/tesla_ble_mqtt
 
     volumes:
       - tesla_ble_mqtt:/share/tesla_ble_mqtt
