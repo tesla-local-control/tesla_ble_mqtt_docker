@@ -24,7 +24,7 @@ services:
     stdin_open: true
 
     # TODO : still valid?
-    # Reply: Let's see by remming it out
+    # Reply: It seems to work after I remmed it out
     # working_dir: /share/tesla_ble_mqtt
 
     volumes:
