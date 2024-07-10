@@ -5,7 +5,7 @@
 ### Hardware
 1. A Linux based computer which could be the same machine that runs Home Assistant (HA), or a seperate device located remotely from the HA machine, but close to where the car is located. We'll call this device the Host Device (HD). A Raspberry Pi makes an ideal HD
 2. Bluetooth Low Energy (BLE) capabilities. This could be a plug in USB device or built-in to the HD. A strong BLE signal is required for reliable operation, so the HD should be located close to where the car is normally parked
-3. An existing Linux OS installation which is already installed and operational the HD. For a RPi this could be DietPi or Raspberry Pi OS. You will need to check that BLE (not just standard Bluetooth without BLE) is opertional before proceeding
+3. An existing Linux OS installation which is already installed and operational on the HD. For a RPi this could be DietPi or Raspberry Pi OS. You will need to check that BLE (not just standard Bluetooth without BLE) is operational before proceeding
 
 ### Software
 #### On the Host Device
@@ -32,10 +32,10 @@ There are various methods to deploy the container, I describe the main ones belo
 2. Download docker-compose.yml and stack.env from the github repository:
    ```yaml
    wget https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/docker-compose.yml
-   wget https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/iain-dev/stack.env
+   wget https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
    ```
 3. Check docker-compose.yml contents are suitable for your needs. It will be ok as is for most people
-4. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to fnd this TODO):
+4. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
    ```yaml
    # Optional for car presence detection; If multiple cars, separate with , or | or white space
    #
