@@ -150,7 +150,7 @@ This is for those who can't (or don't want to) use the pre-built images from Doc
 ```
 REPOSITORY                   TAG                 IMAGE ID       CREATED          SIZE
 tesla_ble_mqtt               latest              8032d3fc0fb8   14 minutes ago   34.1MB
-golang                       1.22.4-alpine3.20   ae51de63cd1e   3 weeks ago      227MB
+golang                       1.22.4-alpine3.20   ae51de63cd1f   3 weeks ago      227MB
 alpine                       3.20.0              31d13e3b0449   6 weeks ago      6.52MB
 hello-world                  latest              f0c407f2ecb9   4 months ago     8.95kB
 ```
