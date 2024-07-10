@@ -108,7 +108,7 @@ Launching listen_to_mqtt
 TODO
 #### Deploy using Dockerfile via Command Line ####
 This is for those who can't (or don't want to) use the pre-built images from Dockerhub. For example you may have an architecture for which there is no image on Dockerhub
-1. Build the image from the command line `docker build -t tesla_ble_mqtt:latest https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git`. Note this can take some time on slower machines, e.g. 40mins+ on a RPi1b. The output will look something like this:
+1. Build the image from the command line `docker build -t tesla_ble_mqtt:latest https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git`. Note this can take some time on slower machines, e.g. 45mins+ on a RPi1b. The output will look something like this:
 ```
 [+] Building 2818.9s (18/18) FINISHED                                                                                                       docker:default
  => [internal] load git source https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git                                                      29.7s
@@ -131,9 +131,6 @@ This is for those who can't (or don't want to) use the pre-built images from Doc
  => exporting to image                                                                                                                               16.1s
  => => exporting layers                                                                                                                              15.8s
  => => writing image sha256:8032d3fc0fb818244a987ea0691df0c666527e6ac2dafade1604dc37a97998e5                                                          0.1s
-
- 1 warning found (use --debug to expand):
- - FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 1)
 ```
 2. When completed, check it's there by issuing `docker images`. You will see somthing like this:
 ```
