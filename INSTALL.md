@@ -23,7 +23,7 @@
 ### Deploy the Container
 There are various methods to deploy the container, I describe the main ones below:
 #### Deploy using Command Line ####
-1. Create a `tesla_ble_mqtt_docker` folder in your user directory and change directory into it:
+1. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
    ```yaml
    cd ~ 
    mkdir tesla_ble_mqtt_docker 
@@ -40,48 +40,37 @@ There are various methods to deploy the container, I describe the main ones belo
    # Optional for car presence detection; If multiple cars, separate with , or | or white space
    #
    BLE_MAC_LIST=
-
    # Default 5 (seconds)
    #
    BLE_CMD_RETRY_DELAY=
-
    ### Default false
    #
    DEBUG=
-
    # Hostname or IP address
    #
    MQTT_SERVER=
-
    # Service port # or name
    #
    MQTT_PORT=1883
-
    # If no username provided, anonymous mode.
    #
    MQTT_USERNAME=
-
    # If you have special characters, wrap with ' at both ends; escape ' if needed
    #
    MQTT_PASSWORD=
-
    # Default 120 (seconds)
    #
    PRESENCE_DETECTION_LOOP_DELAY=
-
    # Default 240 (seconds)
    #
    PRESENCE_DETECTION_TTL=
-
    # Mandatory; if multiple VINs separate with , or | or white space
    #
    VIN_LIST=
-
    # Your timezone
    # Ref: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
    #
    TZ='Europe/London'
-
    #
    # WARNING; If you run Home Assistant, keep this true unless you know what you're doing
    #
