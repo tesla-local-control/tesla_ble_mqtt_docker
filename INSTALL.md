@@ -10,9 +10,8 @@
 ### Software
 #### On the Host Device
 1. A Linux distribution
-2. docker. As an example for a Raspberry Pi OS 32-bit see these instructions https://docs.docker.com/engine/install/raspberry-pi-os/
-3. docker-compose. Not required if using Portainer. If using Raspberry Pi OS use the following command to ensure you get the correct version: `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose`
-4. Optional: Portainer, useful if you prefer a GUI to manage your Docker setup. If you can put up with the ads, there's a good guide on installing Docker and Portainer here https://pimylifeup.com/raspberry-pi-portainer/
+2. Docker. As an example for a Raspberry Pi OS 32-bit see these instructions https://docs.docker.com/engine/install/raspberry-pi-os/
+3. Optional: Portainer, useful if you prefer a GUI to manage your Docker setup. If you can put up with the ads, there's a good guide on installing Docker and Portainer here https://pimylifeup.com/raspberry-pi-portainer/
 
 #### In Home Assistant
 1. Mosquitto Add-on
@@ -31,8 +30,8 @@ There are various methods to deploy the container, I describe the main ones belo
    ```
 2. Download docker-compose.yml and stack.env from the github repository:
    ```yaml
-   wget https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/docker-compose.yml
-   wget https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
+   curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/docker-compose.yml
+   curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
    ```
 3. Check docker-compose.yml contents are suitable for your needs. It will be ok as is for most people
 4. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
@@ -78,7 +77,7 @@ There are various methods to deploy the container, I describe the main ones belo
    ```
 5. Create the Docker volume: `docker volume create tesla_ble_mqtt`
 6. Create a symbolic link to the environment file: `ln -s stack.env env`
-7. Start the container: `docker-compose up -d`
+7. Start the container: `docker compose up -d`
 8. Check the logs `docker logs tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
 ```
 Configuration Options are:
