@@ -1,25 +1,11 @@
-
-<!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
-
-## 0.1.0
-
-### BREAKING CHANGES & Upgrade Instruction
-- Save config before update: Now supports **list** of VINS and MAC addresses. You will need to adjust configuration. Existing **entities** from v0.0.10f will not be affected with a few exceptions***
-- Cut & Paste your current vin to vin_list
-- Cut & Paste your current mac_addr to mac_addr_list
-- ENTITIES RENAMED; for consistency all entities now use - (no more _). /!\ It will affect your current Home Assistant MQTT entities (if you use them)
-
-| **Old**           | **New entity name**      |
-|-------------------|--------------------------|
-| auto_seat-climate | auto-seat-and-climate    |
-| flash_lights      | flash-lights             |
-| heated_seat_left  | heater-seat-front-left*  |
-| heated_seat_right | heater-seat-front-right* |
-| sw_heater         | steering-wheel-heater    |
-
-\* in preparation of rear seats
+## 0.0.11
 
 ### Changed
+
+<p>${\textsf{\color{red}WARNING WARNING WARNING}}$<br>
+DO NOT UPGRADE PRIOR TO READ THE BELOW UPGRADE INSTRUCTIONS, SEE AFTER LIST OF CHANGES
+<br>${\textsf{\color{red}WARNING WARNING WARNING}}$</p>
+
 - NEW Feature: Support for unlimited cars (VINs + MAC Addrs)
 - NEW Feature: Added a TTL for car presence, when gone the sensor in HA stays ON until the TTL expires
 - NEW Feature: Added "debug" entity which sends only one charge amps command: Issue [#19](https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/19)
@@ -30,11 +16,35 @@
 - CHG: Support bashio::log w/ timestamp (HA add-on)
 - CHG: Reduce logging; Improved colors consistency; More to be removed once code is considered stable
 - CHG: Add bluez-deprecated pkg (ciptool hciattach hciconfig hcidump hcitool meshctl rfcomm sdptool)
-- CHG: Rename entities for consistency & better wording
+- CHG: Rename entities for consistency & better wording (see table below)
 - WARNING: [BLE device possible overheating](https://github.com/tesla-local-control/tesla-local-control-addon/issues/27) causing performance issues
 
+#### Upgrade Instructions & ${\textsf{\color{red}BREAKING CHANGES}}$
+- **Before update** save your configuration values (VIN, MAC address and MQTT values)
+- You will need to adjust your configuration
+- Now supports **list** of VINS and MAC addresses.
+- Paste your current vin to vin_list, if you own more than 1 Tesla add them all!
+- Paste your current mac_addr to mac_addr_list (optional for presence detection)
+- Paste your MQTT values
+- Existing **entities** from v0.0.10f will not be affected with a few exceptions***
+
+#### Entities renamed
+
+<p>For consistency, moving foward entity name uses only alphadigits and as a seperator - (no more _).<br>
+/!\ It will affect your current Home Assistant MQTT entities (if you use them)></p>
+
+   | Old Entity Name   | New Entity Name          |
+   |:------------------|:-------------------------|
+   | auto_seat-climate | auto-seat-and-climate    |
+   | flash_lights      | flash-lights             |
+   | heated_seat_left  | heater-seat-front-left*  |
+   | heated_seat_right | heater-seat-front-right* |
+   | sw_heater         | steering-wheel-heater    |
+   * in preparation "someday" for rear seats
 
 ## 0.0.10
+
+### Changed
 
 - Toggle to enable/disable car presence detection
 - Added multi-level & multi-color logs
