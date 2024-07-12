@@ -27,6 +27,4 @@ services:
     # Uncomment if you need a container shell when the container won't run 
     # entrypoint: "/bin/ash"
 
-    # Uncommenting restart: unless-stopped is recommended when the container is fully configured and working correctly    
-    restart: "no"
-    #restart: unless-stopped
+    restart: unless-stopped
