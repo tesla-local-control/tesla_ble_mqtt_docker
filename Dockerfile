@@ -1,4 +1,4 @@
-FROM golang:1.22.4-alpine3.20 as build
+FROM golang:1.22.4-alpine3.20 AS build
 
 RUN apk add --no-cache \
   unzip
@@ -17,7 +17,7 @@ FROM alpine:3.20.0
 # install dependencies
 RUN apk add --no-cache \
   bluez \
-  bluez-depricated \
+  bluez-deprecated \
   mosquitto-clients \
   openssl
 
