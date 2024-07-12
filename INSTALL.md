@@ -103,6 +103,8 @@ Entering Listen to MQTT loop...
 Launch BLE scanning for car presence every 120 seconds
 Launching listen_to_mqtt
 ```
+#### Deploy using Dockerfile #### 
+See instructions here: INSTALL-WITH-DOCKERFILE.md
 #### Deploy using Portainer ####
 TODO
 ### Activate the Key via Home Assistant
