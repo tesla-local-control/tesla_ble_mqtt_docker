@@ -1,7 +1,7 @@
 # Deploy using Dockerfile #
 ## Deploy using Dockerfile via Command Line ##
 This is for those who can't (or don't want to) use the pre-built images from Dockerhub. For example you may have an architecture for which there is no image on Dockerhub
-1. Build the image from the command line `docker build -t tesla_ble_mqtt:latest https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git`. Note this can take some time on slower machines, e.g. 65mins+ on a RPi1b. The output will look something like this:
+i. Build the image from the command line `docker build -t tesla_ble_mqtt:latest https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git`. Note this can take some time on slower machines, e.g. 65mins+ on a RPi1b. The output will look something like this:
 ```
 [+] Building 3977.9s (18/18) FINISHED                                                                                                       docker:default
  => CACHED [internal] load git source https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git                                                3.5s
@@ -46,25 +46,25 @@ This is for those who can't (or don't want to) use the pre-built images from Doc
  => => writing image sha256:87b1c8676fba83a9903257dbc41e5a6bbd95339ca29eebe4da4aa4bf0aceb908                                                          0.0s
  => => naming to docker.io/library/tesla_ble_mqtt:latest  
 ```
-2. When completed, check it's there by issuing `docker images`. You will see somthing like this:
+ii. When completed, check it's there by issuing `docker images`. You will see somthing like this:
 ```
 REPOSITORY                   TAG                 IMAGE ID       CREATED          SIZE
 tesla_ble_mqtt               latest              8032d3fc0fb8   14 minutes ago   35.4MB
 hello-world                  latest              f0c407f2ecb9   4 months ago     8.95kB
 ```
-3. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
+iii. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
    ```shell
    cd ~ 
    mkdir tesla_ble_mqtt_docker 
    cd tesla_ble_mqtt_docker
    ```
-4. Download docker-compose.yml and stack.env from the github repository:
+iv. Download docker-compose.yml and stack.env from the github repository:
    ```shell
    curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/docker-compose.yml
    curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
    ```
-5. You will need to edit docker-compose.yml. Change the line `image: "iainbullock/tesla_ble_mqtt:latest"` to `image: "tesla_ble_mqtt:latest"`
-6. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
+v. You will need to edit docker-compose.yml. Change the line `image: "iainbullock/tesla_ble_mqtt:latest"` to `image: "tesla_ble_mqtt:latest"`
+vi. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
 ```shell
 # Mandatory; if multiple VINs separate with , or white space
 #
@@ -105,10 +105,10 @@ DEBUG=
 #
 ENABLE_HA_FEATURES=true
 ```
-7. Create the Docker volume: `docker volume create tesla_ble_mqtt`
-8. Create a symbolic link to the environment file: `ln -s stack.env env`
-9. Start the container: `docker compose up -d`
-10. Check the logs `docker logs -t tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
+vii. Create the Docker volume: `docker volume create tesla_ble_mqtt`
+viii. Create a symbolic link to the environment file: `ln -s stack.env env`
+ix. Start the container: `docker compose up -d`
+x. Check the logs `docker logs -t tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
 ```
 Configuration Options are:
   BLE_CMD_RETRY_DELAY=5
