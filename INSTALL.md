@@ -127,4 +127,4 @@ TODO
 - Rename the newly added Unknown Key to a recognizable name, like BLE Key.
 
 ### 4 - Test Sending Commands with the BLE Key
-From the Home Assistant interface, test the available commands.
+- From the Home Assistant interface, test the available commands.
