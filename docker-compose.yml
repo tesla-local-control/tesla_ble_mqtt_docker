@@ -5,32 +5,26 @@ volumes:
 services:
   tesla_ble_mqtt:
     container_name: tesla_ble_mqtt
-    image: "tesla-local-control/tesla_ble_mqtt:latest"
+    image: "iainbullock/tesla_ble_mqtt:latest"
+    #image: "tesla_ble_mqtt:latest"
 
-
-    # Configuration Settings have been moved to the "env" file
+    # Configuration Settings have been moved to the "stack.env" file
     env_file:
-      - env
+      - stack.env
 
+    # Needed to open the Bluetooth dongle to send commands to the car
     network_mode: host
-
-    # TODO:  Needed to open the Bluetooth dongle to send commands to the car
     privileged: true
-    # TODO: Needed to open the Bluetooth device
+
+    # Allow opening of a shell in container
     tty: true
-
-    # TODO : Why?
     stdin_open: true
-
-    # TODO : still valid?
-    working_dir: /share/tesla_ble_mqtt
 
     volumes:
       - tesla_ble_mqtt:/share/tesla_ble_mqtt
       - /run/dbus:/run/dbus
 
-    # TODO: most likely not needed to overwrite the image's default
-    entrypoint: "/app/run.sh"
+    # Uncomment if you need a container shell when the container won't run 
+    # entrypoint: "/bin/ash"
 
-    restart: no
-    #restart: unless-stopped
+    restart: unless-stopped
