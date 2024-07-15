@@ -24,8 +24,8 @@ There are various methods to deploy the container, see the main ones below:
 #### Deploy using Command Line ####
 i. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
    ```shell
-   cd ~ 
-   mkdir tesla_ble_mqtt_docker 
+   cd ~
+   mkdir tesla_ble_mqtt_docker
    cd tesla_ble_mqtt_docker
    ```
 ii. Download docker-compose.yml and stack.env from the github repository:
@@ -78,7 +78,7 @@ iv. Update the environment variables in stack.env according to your needs. As a 
 v. Create the Docker volume: `docker volume create tesla_ble_mqtt`
 vi. Create a symbolic link to the environment file: `ln -s stack.env env`
 vii. Start the container: `docker compose up -d`
-vii. Check the logs `docker logs -t tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
+vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
   ```
   Configuration Options are:
     BLE_CMD_RETRY_DELAY=5
@@ -103,7 +103,7 @@ vii. Check the logs `docker logs -t tesla_ble_mqtt`. Typical logs after start up
   Launch BLE scanning for car presence every 120 seconds
   Launching listen_to_mqtt
   ```
-#### Deploy using Dockerfile #### 
+#### Deploy using Dockerfile ####
 See instructions here: [INSTALL-WITH-DOCKERFILE.md](INSTALL-WITH-DOCKERFILE.md)
 #### Deploy using Portainer ####
 TODO
