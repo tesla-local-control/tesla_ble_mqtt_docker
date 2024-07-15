@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Changed
+
+- CHG: Fix allow empty setting BLE MAC addr (Docker standalone)
+
 ## 0.1.1
 
 ### Changed

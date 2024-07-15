@@ -13,7 +13,7 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if ! echo $BLE_MAC_LIST | grep -Eq "$BLE_MAC_PATTERN"; then
+  if [ -z $BLE_MAC_LIST ] || ! echo $BLE_MAC_LIST | grep -Eq "$BLE_MAC_PATTERN"; then
     log_fatal "Fatal; BLE_MAC_LIST:$BLE_MAC_LIST is not compliant, please check this setting"
     exitOnError=1
   fi
