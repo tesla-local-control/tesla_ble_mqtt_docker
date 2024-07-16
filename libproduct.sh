@@ -13,10 +13,10 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if [ -z $BLE_MAC_LIST ] || ! echo $BLE_MAC_LIST | grep -Eq "$BLE_MAC_PATTERN"; then
-    log_fatal "Fatal; BLE_MAC_LIST:$BLE_MAC_LIST is not compliant, please check this setting"
-    exitOnError=1
-  fi
+#  if [ -z $BLE_MAC_LIST ] || ! echo $BLE_MAC_LIST | grep -Eq "$BLE_MAC_PATTERN"; then
+#    log_fatal "Fatal; BLE_MAC_LIST:$BLE_MAC_LIST is not compliant, please check this setting"
+#    exitOnError=1
+#  fi
 
   if ! echo $PRESENCE_DETECTION_LOOP_DELAY | grep -Eq "$INT1PLUS_PATTERN"; then
     log_fatal "Fatal; PRESENCE_DETECTION_LOOP_DELAY:$PRESENCE_DETECTION_LOOP_DELAY is not compliant, please check this setting"
