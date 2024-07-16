@@ -1,6 +1,8 @@
 # Deploy using Dockerfile #
+
 ## Deploy using Dockerfile via Command Line ##
 This is for those who can't (or don't want to) use the pre-built images from Dockerhub. For example you may have an architecture for which there is no image on Dockerhub
+<br /><br />
 i. Build the image from the command line `docker build -t tesla_ble_mqtt:latest https://github.com/tesla-local-control/tesla_ble_mqtt_docker.git`. Note this can take some time on slower machines, e.g. 65mins+ on a RPi1b. The output will look something like this:
 ```
 [+] Building 3977.9s (18/18) FINISHED                                                                                                       docker:default
@@ -46,7 +48,8 @@ i. Build the image from the command line `docker build -t tesla_ble_mqtt:latest 
  => => writing image sha256:87b1c8676fba83a9903257dbc41e5a6bbd95339ca29eebe4da4aa4bf0aceb908                                                          0.0s
  => => naming to docker.io/library/tesla_ble_mqtt:latest  
 ```
-ii. When completed, check it's there by issuing `docker images`. You will see somthing like this:
+ii. When completed, check it's there by issuing `docker images`. You will see something like this:
+
 ```
 REPOSITORY                   TAG                 IMAGE ID       CREATED          SIZE
 tesla_ble_mqtt               latest              8032d3fc0fb8   14 minutes ago   35.4MB
@@ -64,6 +67,7 @@ iv. Download docker-compose.yml and stack.env from the github repository:
    curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
    ```
 v. You will need to edit docker-compose.yml. Change the line `image: "iainbullock/tesla_ble_mqtt:latest"` to `image: "tesla_ble_mqtt:latest"`
+<br /><br />
 vi. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
 ```shell
 # Mandatory; if multiple VINs separate with , or white space
@@ -106,15 +110,18 @@ DEBUG=
 ENABLE_HA_FEATURES=true
 ```
 vii. Create the Docker volume: `docker volume create tesla_ble_mqtt`
+<br /><br />
 viii. Create a symbolic link to the environment file: `ln -s stack.env env`
+<br /><br />
 ix. Start the container: `docker compose up -d`
+<br /><br />
 x. Check the logs `docker logs -t tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
 ```
 Configuration Options are:
   BLE_CMD_RETRY_DELAY=5
   BLE_MAC_LIST=40:XX:XX:XX:XX:F9
   DEBUG=false
-  MQTT_SERVER=192.168.1.5
+  MQTT_SERVER=192.168.X.Y
   MQTT_PORT=1883
   MQTT_PASSWORD=Not Shown
   MQTT_USERNAME=XXXXXX
@@ -133,7 +140,6 @@ Entering Listen to MQTT loop...
 Launch BLE scanning for car presence every 120 seconds
 Launching listen_to_mqtt
 ```
-
+<br /><br />
 ## Deploy using Dockerfile via Portainer ##
-Again this is for those who can't (or don't want to) use the pre-built images from Dockerhub
-TODO
+This is for those who can't (or don't want to) use the pre-built images from Dockerhub. Instructions are in this document: [INSTALLwPortDFile.md](INSTALLwPortDFile.md)
