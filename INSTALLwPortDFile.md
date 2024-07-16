@@ -13,7 +13,7 @@ iii. Select the 'Images' link from the left menu. Click the blue '+ Build a new 
 <br /><br />
 ![image](https://github.com/user-attachments/assets/4da7b772-8281-431b-80f9-1dad7efddde9)
 <br /><br />
-iv. When the build has completed, the Output tab on the 'Build image' page will display 'No build output available.Select the 'Images' link from the left menu, an image with tag 'tesla_ble_mqtt:latest' should be visible in the 'Image list' page:
+iv. When the build has completed, the Output tab on the 'Build image' page will display 'No build output available. Select the 'Images' link from the left menu, an image with tag 'tesla_ble_mqtt:latest' should be visible in the 'Image list' page:
 ![image](https://github.com/user-attachments/assets/ef854d30-52b0-447c-b9e6-a299b5997352)
 <br /><br />
 v. Select the 'Stacks' link from the left menu. Click the blue '+ Add Stack' button. In the 'Create stack' page, enter `tesla_ble_mqtt` in the Name field. Copy and Paste the contents of [docker-compose.yml](https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/docker-compose.yml) into the Web editor box:
