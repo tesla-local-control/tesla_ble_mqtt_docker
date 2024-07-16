@@ -21,6 +21,7 @@
 
 ### 1 - Deploy the Container ###
 There are various methods to deploy the container, see the main ones below:
+
 #### Deploy using Command Line ####
 i. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
    ```shell
@@ -34,6 +35,7 @@ ii. Download docker-compose.yml and stack.env from the github repository:
    curl -O https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env
    ```
 iii. Check docker-compose.yml contents are suitable for your needs. It will be ok as is for most people
+<br /><br />
 iv. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
   ```shell
   # Mandatory; if multiple VINs separate with , or white space
@@ -69,6 +71,9 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   TZ='Europe/London'
   ### Default false
   #
+  TEMPERATURE_UNIT_FAHRENHEIT=
+  ### Default false
+  #
   DEBUG=
   #
   # WARNING; If you run Home Assistant, keep this true unless you know what you're doing
@@ -76,8 +81,11 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   ENABLE_HA_FEATURES=true
   ```
 v. Create the Docker volume: `docker volume create tesla_ble_mqtt`
+<br /><br />
 vi. Create a symbolic link to the environment file: `ln -s stack.env env`
+<br /><br />
 vii. Start the container: `docker compose up -d`
+<br /><br />
 vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up look like this (when DEBUG=false):
   ```
   Configuration Options are:
@@ -104,27 +112,29 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
   Launching listen_to_mqtt
   ```
 #### Deploy using Dockerfile ####
-See instructions here: [INSTALL-WITH-DOCKERFILE.md](INSTALL-WITH-DOCKERFILE.md)
+See instructions here: [INSTALLwDockerfile.md](INSTALLwDockerfile.md)
+
 #### Deploy using Portainer ####
-TODO
+See instructions here: [INSTALLwPortainer.md](INSTALLwPortainer.md)
 
 ### 2 - Activate the Key via Home Assistant
-- Go to the Integrations page in Home Assistant and click on the MQTT box.
+- Go to the Integrations page in Home Assistant and click on the MQTT box
 - One new device per vehicle should appear in the list: `Tesla_BLE_LRWXXXXXXXXXXX403`
-- Access the list of entities linked to the device by clicking on it.
+- Access the list of entities linked to the device by clicking on it
 - Press the button `Generate Keys`
 - It is useful to monitor the logs during this process
 
 ### 3 - Add the Key to the Vehicle ###
 
 > [!Important]
-> The Host Device must be near the vehicle.
+> The Host Device must be near the vehicle
 
-- Get a vehicle key card.
-- Sit in the driver’s seat with your phone open to the Home Assistant page for the MQTT device. The vehicle screen should be active.
-- Press Deploy Key from the HA interface on your phone.
-- Immediately, place the key card on the central console as if to start the vehicle. A confirmation message will ask you to validate adding the key.
-- Rename the newly added Unknown Key to a recognizable name, like BLE Key.
+- Get a vehicle key card
+- Sit in the driver’s seat with your phone open to the Home Assistant page for the MQTT device. The vehicle screen should be active
+- Press Deploy Key from the HA interface on your phone
+- Immediately place the key card on the central console as if to start the vehicle. A confirmation dialog will popup ask you to validate adding the key
+- Rename the newly added Unknown Key to a recognizable name, e.g. BLE Key
+- NOTE: You may have to try this process several times before the confirmation dialog will appear
 
 ### 4 - Test Sending Commands with the BLE Key
-- From the Home Assistant interface, test the available commands.
+- From the Home Assistant interface, test the available commands
