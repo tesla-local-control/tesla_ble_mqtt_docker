@@ -6,9 +6,11 @@ RUN apk add --no-cache \
 RUN mkdir -p /app/bin
 
 # install Tesla Go packages
-ADD https://github.com/teslamotors/vehicle-command/archive/refs/heads/main.zip /tmp
-RUN unzip /tmp/main.zip -d /app
-WORKDIR /app/vehicle-command-main
+#ADD https://github.com/teslamotors/vehicle-command/archive/refs/heads/main.zip /tmp
+#RUN unzip /tmp/main.zip -d /app
+#WORKDIR /app/vehicle-command-main
+RUN git clone https://github.com/tesla-local-control/vehicle-command-seth.git --branch ble-reliability-improvements /app/vehicle-command
+WORKDIR /app/vehicle-command
 RUN go get ./...
 RUN go build -o /app/bin ./...
 
