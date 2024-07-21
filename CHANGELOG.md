@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0
+
+### Changed
+
+<p>**WARNING WARNING WARNING**<br>
+Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READ THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
+
+- NEW Feature: Car's BLE MAC address is now auto-detected
+- NEW Feature: Info Bluetooth Adapter, view in add-on's Log tab Bluetooth adapter's info/state
+- CHG Removed: setting ble\_mac\_list; obsoleted by BLE MAC address auto-detection
+- CHG Removed: scan-bleln-macaddr, obsoleted by BLE MAC address auto-detection
+
 ## 0.1.2
 
 ### Changed
