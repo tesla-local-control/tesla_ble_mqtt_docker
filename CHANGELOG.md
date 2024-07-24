@@ -27,7 +27,6 @@ On/off and Open/Close entities have been grouped under switches and covers.</p>
 
 - NEW Feature: Car's BLE MAC address is now auto-detected
 - NEW Feature: Info Bluetooth Adapter, view in add-on's Log tab
-
 - NEW Feature: Added more car specific commands; see below for the list
 - NEW Feature: Migrated buttons to covers and switches
 - NEW: Icons were added in the UI!
