@@ -1,7 +1,6 @@
 function validateEnvVars() {
   exitOnError=0
 
-  BLE_MAC_PATTERN='^([0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5})(\|[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5})*$'
   VIN_PATTERN='^([A-HJ-NPR-Z0-9]{17})(\|[A-HJ-NPR-Z0-9]{17})*$'
   INT0PLUS_PATTERN='^[0-9]+$'
   INT1PLUS_PATTERN='^[1-9][0-9]*$'
@@ -43,9 +42,12 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  [ $exitOnError -ne 0 ] \
-    && touch /data/.exitOnError \
-    && exit 99
+  if [ $exitOnError -eq 0 ]; then
+    :
+  else
+    touch /data/.exitOnError
+    exit 99
+  fi
 
 }
 

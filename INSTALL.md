@@ -53,9 +53,6 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   # If you have special characters, wrap with ' at both ends; escape ' if needed
   #
   MQTT_PASSWORD=
-  # Optional for car presence detection; If multiple cars, separate with , or white space
-  #
- BLE_MAC_LIST=
   # Default 5 (seconds)
   #
   BLE_CMD_RETRY_DELAY=
@@ -87,7 +84,6 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
   ```
   Configuration Options are:
     BLE_CMD_RETRY_DELAY=5
-    BLE_MAC_LIST=40:XX:XX:XX:XX:F9
     DEBUG=false
     MQTT_SERVER=192.168.1.5
     MQTT_PORT=1883
