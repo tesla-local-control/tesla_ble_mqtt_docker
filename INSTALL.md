@@ -112,10 +112,10 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
   Launching listen_to_mqtt
   ```
 #### Deploy using Dockerfile ####
-See instructions here: [INSTALLwDockerfile.md](INSTALLwDockerfile.md)
+See instructions here: [INSTALL with Dockerfile.md](INSTALLwDockerfile.md)
 
 #### Deploy using Portainer ####
-See instructions here: [INSTALLwPortainer.md](INSTALLwPortainer.md)
+See instructions here: [INSTALL with Portainer.md](INSTALLwPortainer.md)
 
 ### 2 - Activate the Key via Home Assistant
 - Go to the Integrations page in Home Assistant and click on the MQTT box
