@@ -85,9 +85,6 @@ MQTT_USERNAME=
 # If you have special characters, wrap with ' at both ends; escape ' if needed
 #
 MQTT_PASSWORD=
-# Optional for car presence detection; If multiple cars, separate with , or white space
-#
-BLE_MAC_LIST=
 # Default 5 (seconds)
 #
 BLE_CMD_RETRY_DELAY=
