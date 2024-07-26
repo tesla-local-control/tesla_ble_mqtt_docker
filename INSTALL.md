@@ -53,9 +53,6 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   # If you have special characters, wrap with ' at both ends; escape ' if needed
   #
   MQTT_PASSWORD=
-  # Optional for car presence detection; If multiple cars, separate with , or white space
-  #
- BLE_MAC_LIST=
   # Default 5 (seconds)
   #
   BLE_CMD_RETRY_DELAY=
@@ -69,9 +66,6 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   # Ref: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   #
   TZ='Europe/London'
-  ### Default false
-  #
-  TEMPERATURE_UNIT_FAHRENHEIT=
   ### Default false
   #
   DEBUG=
@@ -90,7 +84,6 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
   ```
   Configuration Options are:
     BLE_CMD_RETRY_DELAY=5
-    BLE_MAC_LIST=40:XX:XX:XX:XX:F9
     DEBUG=false
     MQTT_SERVER=192.168.1.5
     MQTT_PORT=1883
@@ -112,10 +105,10 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
   Launching listen_to_mqtt
   ```
 #### Deploy using Dockerfile ####
-See instructions here: [INSTALL with Dockerfile.md](INSTALLwDockerfile.md)
+See instructions here: [INSTALLwDockerfile.md](INSTALLwDockerfile.md)
 
 #### Deploy using Portainer ####
-See instructions here: [INSTALL with Portainer.md](INSTALLwPortainer.md)
+See instructions here: [INSTALLwPortainer.md](INSTALLwPortainer.md)
 
 ### 2 - Activate the Key via Home Assistant
 - Go to the Integrations page in Home Assistant and click on the MQTT box
@@ -138,3 +131,4 @@ See instructions here: [INSTALL with Portainer.md](INSTALLwPortainer.md)
 
 ### 4 - Test Sending Commands with the BLE Key
 - From the Home Assistant interface, test the available commands
+

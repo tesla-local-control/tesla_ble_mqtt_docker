@@ -1,7 +1,6 @@
 function validateEnvVars() {
   exitOnError=0
 
-  BLE_MAC_PATTERN='^([0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5})(\|[0-9A-Fa-f]{2}(:[0-9A-Fa-f]{2}){5})*$'
   VIN_PATTERN='^([A-HJ-NPR-Z0-9]{17})(\|[A-HJ-NPR-Z0-9]{17})*$'
   INT0PLUS_PATTERN='^[0-9]+$'
   INT1PLUS_PATTERN='^[1-9][0-9]*$'
@@ -10,11 +9,6 @@ function validateEnvVars() {
 
   if ! echo $VIN_LIST | grep -Eq "$VIN_PATTERN"; then
     log_fatal "Fatal; VIN_LIST:$VIN_LIST is not compliant, please check this setting"
-    exitOnError=1
-  fi
-
-  if [ -z $BLE_MAC_LIST ] || ! echo $BLE_MAC_LIST | grep -Eq "$BLE_MAC_PATTERN"; then
-    log_fatal "Fatal; BLE_MAC_LIST:$BLE_MAC_LIST is not compliant, please check this setting"
     exitOnError=1
   fi
 
@@ -52,6 +46,7 @@ function validateEnvVars() {
     log_fatal "Fatal; TEMPERATURE_UNIT_FAHRENHEIT:$TEMPERATURE_UNIT_FAHRENHEIT is not compliant, please check this setting"
     exitOnError=1
   fi
+
 
   if [ $exitOnError -eq 0 ]; then
     :
