@@ -42,6 +42,12 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
+  if [ "$TEMPERATURE_UNIT_FAHRENHEIT" != 'true' ] && [ "$TEMPERATURE_UNIT_FAHRENHEIT" != 'false' ]; then
+    log_fatal "Fatal; TEMPERATURE_UNIT_FAHRENHEIT:$TEMPERATURE_UNIT_FAHRENHEIT is not compliant, please check this setting"
+    exitOnError=1
+  fi
+
+
   if [ $exitOnError -eq 0 ]; then
     :
   else

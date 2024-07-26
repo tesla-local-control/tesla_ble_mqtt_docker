@@ -8,7 +8,7 @@ This is for those who can't (or don't want to) use the pre-built images from Doc
 See this document for instructions: [INSTALLwPortDFile.md](INSTALLwPortDFile.md)
 <br /><br />
 ## 2 - Deploy using docker-compose.yml via Portainer - recommended
-This will be the preferred option for most people who are using Portainer. 
+This will be the preferred option for most people who are using Portainer.
 <br /><br />
 i. Login to your Portainer instance. Select the Environment where the deployment will be made
 <br /><br />

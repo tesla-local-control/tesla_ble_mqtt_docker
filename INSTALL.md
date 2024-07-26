@@ -131,3 +131,4 @@ See instructions here: [INSTALLwPortainer.md](INSTALLwPortainer.md)
 
 ### 4 - Test Sending Commands with the BLE Key
 - From the Home Assistant interface, test the available commands
+

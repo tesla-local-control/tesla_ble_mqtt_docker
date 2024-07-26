@@ -46,7 +46,7 @@ i. Build the image from the command line `docker build -t tesla_ble_mqtt:latest 
  => exporting to image                                                                                                                               19.5s
  => => exporting layers                                                                                                                              19.2s
  => => writing image sha256:87b1c8676fba83a9903257dbc41e5a6bbd95339ca29eebe4da4aa4bf0aceb908                                                          0.0s
- => => naming to docker.io/library/tesla_ble_mqtt:latest  
+ => => naming to docker.io/library/tesla_ble_mqtt:latest
 ```
 ii. When completed, check it's there by issuing `docker images`. You will see something like this:
 
@@ -57,8 +57,8 @@ hello-world                  latest              f0c407f2ecb9   4 months ago    
 ```
 iii. Create a tesla_ble_mqtt_docker folder in your user directory and change directory into it:
    ```shell
-   cd ~ 
-   mkdir tesla_ble_mqtt_docker 
+   cd ~
+   mkdir tesla_ble_mqtt_docker
    cd tesla_ble_mqtt_docker
    ```
 iv. Download docker-compose.yml and stack.env from the github repository:
@@ -85,6 +85,9 @@ MQTT_USERNAME=
 # If you have special characters, wrap with ' at both ends; escape ' if needed
 #
 MQTT_PASSWORD=
+# Optional for car presence detection; If multiple cars, separate with , or white space
+#
+BLE_MAC_LIST=
 # Default 5 (seconds)
 #
 BLE_CMD_RETRY_DELAY=
@@ -98,6 +101,9 @@ PRESENCE_DETECTION_TTL=
 # Ref: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 #
 TZ='Europe/London'
+### Default false
+#
+TEMPERATURE_UNIT_FAHRENHEIT=
 ### Default false
 #
 DEBUG=
@@ -140,3 +146,4 @@ Launching listen_to_mqtt
 <br /><br />
 ## Deploy using Dockerfile via Portainer ##
 This is for those who can't (or don't want to) use the pre-built images from Dockerhub. Instructions are in this document: [INSTALLwPortDFile.md](INSTALLwPortDFile.md)
+
