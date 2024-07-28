@@ -37,12 +37,13 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5.3.0
         with:
-          context: .
           file: ./Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: true
+          build-args: |
+            BUILDKIT_CONTEXT_KEEP_GIT_DIR=true
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}

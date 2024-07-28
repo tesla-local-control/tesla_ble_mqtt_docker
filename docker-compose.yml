@@ -2,35 +2,29 @@ volumes:
   tesla_ble_mqtt:
     external: true
 
-services:   
+services:
   tesla_ble_mqtt:
     container_name: tesla_ble_mqtt
     image: "iainbullock/tesla_ble_mqtt:latest"
- 
-    environment:
-      - TZ='Europe/London'
-      - TESLA_VIN1=00000000000000000
-      - TESLA_VIN2=00000000000000000
-      - TESLA_VIN3=00000000000000000
-      - BLE_MAC=00:00:00:00:00:00
-      - MQTT_IP=127.0.0.1
-      - MQTT_PORT=1883
-      - MQTT_USER=
-      - MQTT_PWD=
-      - SEND_CMD_RETRY_DELAY=5
-      
+    #image: "tesla_ble_mqtt:latest"
+
+    # Configuration Settings have been moved to the "stack.env" file
+    env_file:
+      - stack.env
+
+    # Needed to open the Bluetooth dongle to send commands to the car
+    network_mode: host
+    privileged: true
+
+    # Allow opening of a shell in container
+    tty: true
     stdin_open: true
-    tty: true    
-    
-    entrypoint: "/app/run.sh"
-    working_dir: /share/tesla_ble_mqtt
-    
+
     volumes:
       - tesla_ble_mqtt:/share/tesla_ble_mqtt
       - /run/dbus:/run/dbus
-        
-    network_mode: host
-    privileged: true 
 
-    restart: no
-    #restart: unless-stopped  
+    # Uncomment if you need a container shell when the container won't run 
+    # entrypoint: "/bin/ash"
+
+    restart: unless-stopped
