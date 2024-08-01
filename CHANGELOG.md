@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1
+
+### <p>**WARNING WARNING WARNING**<br>
+Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READ THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
+
+### Changed
+
+- NEW Feature: Allow to set temperature unit F|C via bool
+
 ## 0.2.0
 
 ### <p>**WARNING WARNING WARNING**<br>
