@@ -7,7 +7,7 @@ RUN mkdir -p /app/bin
 
 # install Tesla Go packages
 ADD https://github.com/teslamotors/vehicle-command/archive/refs/tags/v0.1.0.zip /tmp
-RUN unzip /tmp/v0.1.0.zip -d /app
+RUN unzip /tmp/vehicle-command-v0.1.0.zip -d /app
 WORKDIR /app/vehicle-command-main
 RUN go get ./...
 RUN go build -o /app/bin ./...
