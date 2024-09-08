@@ -1,4 +1,4 @@
-FROM golang:1.22.4-alpine3.20 AS build
+FROM golang:1.22.7-alpine3.20 AS build
 
 RUN apk add --no-cache \
   unzip
@@ -6,13 +6,13 @@ RUN apk add --no-cache \
 RUN mkdir -p /app/bin
 
 # install Tesla Go packages
-ADD https://github.com/teslamotors/vehicle-command/archive/refs/heads/main.zip /tmp
-RUN unzip /tmp/main.zip -d /app
+ADD https://github.com/teslamotors/vehicle-command/archive/refs/heads/v0.1.0.zip /tmp
+RUN unzip /tmp/v0.1.0.zip -d /app
 WORKDIR /app/vehicle-command-main
 RUN go get ./...
 RUN go build -o /app/bin ./...
 
-FROM alpine:3.20.0
+FROM alpine:3.20.3
 
 # install dependencies
 RUN apk add --no-cache \
