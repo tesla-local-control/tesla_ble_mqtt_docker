@@ -1,12 +1,21 @@
 # Changelog
 
-## 0.2.0-1
+## 0.2.1-1
 
 Minor version - no change in core code
 
 ### Changed
 
 - CHG: Freeze version of vehicle-command module to ensure compatibility with Alpine Linux available go version (<1.23)
+
+## 0.2.1
+
+### <p>**WARNING WARNING WARNING**<br>
+Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READING THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
+
+### Changed
+
+- NEW Feature: Allow to set temperature unit F|C via bool
 
 ## 0.2.0
 
