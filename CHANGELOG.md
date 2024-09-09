@@ -16,6 +16,8 @@ Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READING THE 0.1.0 UPG
 ### Changed
 
 - NEW Feature: Allow to set temperature unit F|C via bool
+- FIX: Presence detection can not be disabled PR[#52](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/52)
+- FIX: Match comment with regex check PR[#50](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/50)
 
 ## 0.2.0
 
