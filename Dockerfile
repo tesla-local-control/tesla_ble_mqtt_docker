@@ -1,16 +1,16 @@
 FROM golang:1.22.7-alpine3.20 AS build
 
-RUN apk add --no-cache \
-  unzip
+RUN apk add --no-cache git
 
 RUN mkdir -p /app/bin
 
 # install Tesla Go packages
-ADD https://github.com/teslamotors/vehicle-command/archive/refs/tags/v0.1.0.zip /tmp
-RUN unzip /tmp/vehicle-command-0.1.0.zip -d /app
-WORKDIR /app/vehicle-command-0.1.0
-RUN go get ./...
-RUN go build -o /app/bin ./...
+RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
+WORKDIR /vehicle-command
+RUN git checkout tags/v0.1.0
+RUN go get ./... && \
+  go build ./... && \
+  go install ./...
 
 FROM alpine:3.20.3
 
