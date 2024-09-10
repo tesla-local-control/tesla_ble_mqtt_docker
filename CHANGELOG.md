@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.1-1
+
+Minor version - no change in core code
+
+### Changed
+
+- CHG: Freeze version of vehicle-command module to ensure compatibility with Alpine Linux available go version (<1.23)
+
+## 0.2.1
+
+### <p>**WARNING WARNING WARNING**<br>
+Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READING THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
+
+### Changed
+
+- NEW Feature: Allow to set temperature unit F|C via bool
+- FIX: Presence detection can not be disabled PR[#52](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/52)
+- FIX: Match comment with regex check PR[#50](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/50)
+
 ## 0.2.0
 
 ### <p>**WARNING WARNING WARNING**<br>

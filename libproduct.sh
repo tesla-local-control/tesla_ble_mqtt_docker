@@ -12,7 +12,7 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if ! echo $PRESENCE_DETECTION_LOOP_DELAY | grep -Eq "$INT1PLUS_PATTERN"; then
+  if ! echo $PRESENCE_DETECTION_LOOP_DELAY | grep -Eq "$INT0PLUS_PATTERN"; then
     log_fatal "Fatal; PRESENCE_DETECTION_LOOP_DELAY:$PRESENCE_DETECTION_LOOP_DELAY is not compliant, please check this setting"
     exitOnError=1
   fi
