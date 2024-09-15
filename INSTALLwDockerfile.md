@@ -68,7 +68,7 @@ iv. Download docker-compose.yml and stack.env from the github repository:
    ```
 v. You will need to edit docker-compose.yml. Change the line `image: "iainbullock/tesla_ble_mqtt:latest"` to `image: "tesla_ble_mqtt:latest"`
 <br /><br />
-vi. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
+vi. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server:
 ```shell
 # Mandatory; if multiple VINs separate with , or white space
 #
@@ -86,9 +86,6 @@ MQTT_USERNAME=
 #
 MQTT_PASSWORD=
 # Optional for car presence detection; If multiple cars, separate with , or white space
-#
-BLE_MAC_LIST=
-# Default 5 (seconds)
 #
 BLE_CMD_RETRY_DELAY=
 # Default 120 (seconds)
