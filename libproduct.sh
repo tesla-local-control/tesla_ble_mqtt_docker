@@ -47,6 +47,11 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
+  if ! echo $MAX_CURRENT | grep -Eq "$INT0PLUS_PATTERN"; then
+    log_fatal "Fatal; MAX_CURRENT:$MAX_CURRENT is not compliant, please check this setting"
+    exitOnError=1
+  fi
+
 
   if [ $exitOnError -eq 0 ]; then
     :
