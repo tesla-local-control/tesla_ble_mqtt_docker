@@ -36,9 +36,9 @@ ii. Download docker-compose.yml and stack.env from the github repository:
    ```
 iii. Check docker-compose.yml contents are suitable for your needs. It will be ok as is for most people
 <br /><br />
-iv. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server. If you want BLE detection enter the BLE MAC address of the car (see below for instructions on how to find this TODO):
+iv. Update the environment variables in stack.env according to your needs. As a minimum enter the VIN of your car, and the connection details for your MQTT server:
   ```shell
-  # Mandatory; if multiple VINs separate with , or white space
+  # Mandatory; if multiple VINs separate with |
   #
   VIN_LIST=
   # Mandatory; Hostname or IP address
@@ -68,6 +68,12 @@ iv. Update the environment variables in stack.env according to your needs. As a 
   TZ='Europe/London'
   ### Default false
   #
+  TEMPERATURE_UNIT_FAHRENHEIT=
+  ### Default 48
+  #
+  MAX_CURRENT=32
+  ### Default false
+  #
   DEBUG=
   #
   # WARNING; If you run Home Assistant, keep this true unless you know what you're doing
@@ -91,18 +97,21 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
     MQTT_USERNAME=XXXXXX
     PRESENCE_DETECTION_LOOP_DELAY=120
     PRESENCE_DETECTION_TTL=240
+    TEMPERATURE_UNIT_FAHRENHEIT=false
     VIN_LIST=LRWXXXXXXXXXXX403
+    MAX_CURRENT=32
     ENABLE_HA_FEATURES=true
-  Setting up MQTT clients with authentication
-  Presence detection is enable with a TTL of 240 seconds
-  Setting up HA auto discovery for vin LRWXXXXXXXXXXX403
-  Discarding any unread MQTT messages for LRWXXXXXXXXXXX403
+  Removing single buttons to be replaced by switches & covers:
+  windows, charger, cherge-port, climate, trunk
+  delete_legacies_singles; deleting legacy single MQTT entities topics  Setting up MQTT clients with authentication
+  setupHADiscoveryAllVINsMain; Discarding any unread MQTT messages for topic:tesla_ble/LRW3F7FS5RC036403/config
   Listening for Home Assistant Start (in background)
   Entering main loop...
-  Lauching background listen_to_mqtt_loop...
+  main loop; Lauching background listen_to_mqtt_loop...
+  main loop; launch BLE scanning for car presence every 120 seconds
   Entering Listen to MQTT loop...
-  Launch BLE scanning for car presence every 120 seconds
   Launching listen_to_mqtt
+  Listening to MQTT
   ```
 #### Deploy using Dockerfile ####
 See instructions here: [INSTALLwDockerfile.md](INSTALLwDockerfile.md)
