@@ -91,6 +91,7 @@ vii. Check the logs `docker logs -f tesla_ble_mqtt`. Typical logs after start up
     MQTT_USERNAME=XXXXXX
     PRESENCE_DETECTION_LOOP_DELAY=120
     PRESENCE_DETECTION_TTL=240
+    TEMPERATURE_UNIT_FAHRENHEIT=false
     VIN_LIST=LRWXXXXXXXXXXX403
     ENABLE_HA_FEATURES=true
   Setting up MQTT clients with authentication

@@ -28,7 +28,8 @@ vi. Scroll further down the Create stack page. In the Environment variables sect
 <br /><br />
 vii. A box to enter environment variables will open up. Copy and Paste the contents of [stack.env](https://raw.githubusercontent.com/tesla-local-control/tesla_ble_mqtt_docker/main/stack.env) into the box, and press the blue 'Deploy the stack' button:
 <br /><br />
-<img width="714" alt="image" src="https://github.com/user-attachments/assets/cb09e093-3791-4fb4-bfea-07b0f7b2f821">
+<img width="714" alt="image" src="https://github.com/user-attachments/assets/6468115c-de60-41e3-8217-f7f470ed5721">
+<img width="714" alt="image" src="https://github.com/user-attachments/assets/92a676c7-4822-4305-bf04-1445de4819af">
 <br /><br />
 viii. After some time, if all is well, the message 'Success. Stack successfully deployed' will briefly pop-up, and you will be returned to the 'Stacks list' page. Click the newly created tesla_ble_mqtt stack to enter the 'Stack details' page for the new stack. Click the red 'Stop this stack' button, then click the 'Editor' tab:
 <br /><br />
@@ -36,10 +37,12 @@ viii. After some time, if all is well, the message 'Success. Stack successfully 
 <br /><br />
 ix. Scroll down to the 'Environment variables' section. Enter the values required for your setup in the respective fields and when completed press the 'Update the stack' button. Use [stack.env](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/blob/main/stack.env) as a reference
 <br /><br />
-![image](https://github.com/user-attachments/assets/a0a0f149-92ba-49e0-a8fa-b149983f9172)
+<img alt="image" src="https://github.com/user-attachments/assets/00560fee-63e7-4618-84bf-6c3e5876aa17">
 <br /><br />
 x. If all is well, the message 'Success. Stack successfully deployed' will briefly pop-up, and you will be returned to the 'Stacks list' page. Click the tesla_ble_mqtt stack to enter the 'Stack details' page for the new stack. In the Containers section click the tesla_ble_mqtt container to enter the 'Container details' page. From here you can view the logs by pressing the Logs link in the 'Container status' section. Succesful logs look something like this at startup:
 <br /><br />
-![Screenshot 2024-07-15 180414](https://github.com/user-attachments/assets/29a47eeb-e509-4541-a130-37e20629b3d4)
+<img alt="image" src="https://github.com/user-attachments/assets/b6951b9e-e5c7-439e-8ceb-88528cbf87eb">
+
+
 
 
