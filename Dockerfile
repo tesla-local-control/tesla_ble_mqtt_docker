@@ -8,6 +8,7 @@ RUN mkdir -p /app/bin
 RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
 WORKDIR /vehicle-command
 ENV GOPATH=/root/go
+# RUN git checkout tags/v0.2.1
 RUN go get ./... && \
   go build ./... && \
   go install ./...
@@ -29,7 +30,5 @@ COPY app liblog.sh libproduct.sh /app/
 
 # Copy binaries from build stage
 COPY --from=build /root/go/bin/tesla-control /usr/bin/
-COPY --from=build /root/go/ /root
-COPY --from=build /vehicle-command /root
 
 CMD [ "/app/run.sh" ]
