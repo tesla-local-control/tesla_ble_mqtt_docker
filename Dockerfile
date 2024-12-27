@@ -8,7 +8,6 @@ RUN mkdir -p /app/bin
 RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
 WORKDIR /vehicle-command
 ENV GOPATH=/root/go
-RUN git checkout tags/v0.2.1
 RUN go get ./... && \
   go build ./... && \
   go install ./...
