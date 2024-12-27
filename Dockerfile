@@ -31,5 +31,6 @@ COPY app liblog.sh libproduct.sh /app/
 # Copy binaries from build stage
 COPY --from=build /root/go/bin/tesla-control /usr/bin/
 COPY --from=build /root/go/ /root
+COPY --from=build /vehicle-command /root
 
 CMD [ "/app/run.sh" ]
