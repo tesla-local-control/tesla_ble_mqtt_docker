@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Changed
+
+- NEW Feature: Read car state using BLE
+
 ## 0.2.2
 
 ### Changed
