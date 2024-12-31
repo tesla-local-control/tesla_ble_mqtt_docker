@@ -20,7 +20,8 @@ RUN apk add --no-cache \
   bluez \
   bluez-deprecated \
   mosquitto-clients \
-  openssl
+  openssl \
+  jq
 
 # Create various working directories
 RUN mkdir /data
