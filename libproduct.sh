@@ -4,7 +4,7 @@ function validateEnvVars() {
   VIN_PATTERN='^([A-HJ-NPR-Z0-9]{17})(\|[A-HJ-NPR-Z0-9]{17})*$'
   INT0PLUS_PATTERN='^[0-9]+$'
   INT1PLUS_PATTERN='^[1-9][0-9]*$'
-  FLOAT_PATTERN='/[0-9]*\.?[0-9]+'
+  FLOAT_PATTERN='[0-9]*\.?[0-9]+'
   # Hostname & IPv4 Address
   MQTT_SERVER_PATTERN='^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\b|\b([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$'
 
