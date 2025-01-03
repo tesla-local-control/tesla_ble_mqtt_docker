@@ -17,7 +17,7 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if ! echo $BLE_CMD_RETRY_DELAY | grep -Eq "$INT1PLUS_PATTERN"; then
+  if ! echo $BLE_CMD_RETRY_DELAY | grep -Eq "$INT0PLUS_PATTERN"; then
     log_fatal "Fatal; BLE_CMD_RETRY_DELAY:$BLE_CMD_RETRY_DELAY is not compliant, please check this setting"
     exitOnError=1
   fi
