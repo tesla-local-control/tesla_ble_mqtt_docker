@@ -1,4 +1,4 @@
-FROM golang:1.22.7-alpine3.20 AS build
+FROM golang:alpine3.21 AS build
 
 RUN apk add --no-cache git
 
@@ -8,19 +8,20 @@ RUN mkdir -p /app/bin
 RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
 WORKDIR /vehicle-command
 ENV GOPATH=/root/go
-RUN git checkout tags/v0.1.0
+# RUN git checkout tags/v0.2.1
 RUN go get ./... && \
   go build ./... && \
   go install ./...
 
-FROM alpine:3.20.3
+FROM alpine:3.21.0
 
 # install dependencies
 RUN apk add --no-cache \
   bluez \
   bluez-deprecated \
   mosquitto-clients \
-  openssl
+  openssl \
+  jq
 
 # Create various working directories
 RUN mkdir /data
