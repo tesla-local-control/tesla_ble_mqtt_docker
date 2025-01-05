@@ -9,7 +9,7 @@ The MQTT setup can run on your Home Assistant (HA) system or any device separate
 If Home Assistant is already using the MQTT integration, then the various entities will be auto-discovered by HA.
 
 ### Note regarding polling / reading of state
-The dev release doesn't poll to read state. You (or more likely a HA automation) needs to press the 'Force Data Update' button to read / update the state. This will wake the car and keep it awake as long as you keep requesting state updates (which can be problematic for battery usage). I will collect feedback and implement some polling capability in a future release
+The current release doesn't poll to read state. You (or more likely a HA automation) need to press the 'Force Data Update' button to read / update the state. This will wake the car and keep it awake as long as you keep requesting state updates (which can be problematic for battery usage). I will collect feedback and implement some polling capability in a future release
 
 ## Two options to run this tool:
 
