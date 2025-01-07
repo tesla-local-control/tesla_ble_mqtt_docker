@@ -1,6 +1,7 @@
 # Tesla BLE MQTT Docker
 
 ### Update: it is now possible to read state as well as send commands using Bluetooth
+### Update 2 (dev branch): polling of state is now possible
 
 Send commands and read state via MQTT for a Tesla car using Bluetooth Low Energy (BLE). BLE bypasses the current Fleet API rate limitation and does not rely on the API.
 The MQTT setup can run on your Home Assistant (HA) system or any device separate from your HA server, e.g. Raspberry Pi located close to where you park your car
@@ -9,7 +10,11 @@ The MQTT setup can run on your Home Assistant (HA) system or any device separate
 If Home Assistant is already using the MQTT integration, then the various entities will be auto-discovered by HA.
 
 ### Note regarding polling / reading of state
-The current release doesn't poll to read state. You (or more likely a HA automation) need to press the 'Force Data Update' button to read / update the state. This will wake the car and keep it awake as long as you keep requesting state updates (which can be problematic for battery usage). I will collect feedback and implement some polling capability in a future release
+The original production release didn't poll to read state. You (or more likely a HA automation) needed to press the 'Force Data Update' button to read / update the state. This development version adds the option of automatic polling of state. Note the following:
+ - Two new entities have been added to control polling. The Polling switch enables or disables polling completely for the selected car. The Polling Interval number determines in seconds how often (approximately) polling takes place. The minimum setting is 30 secs, maximum is 3600 secs. Values MUST be a multiple of 30. I recommend setting this to a minimum value of 660 to prevent the car staying awake and draining the battery due to excessive polling. If the car is charging it can be reduced as required. Intervals less than 60 (for a single car setup) are not recommended if polling all state categories as all entities may not be returned before the next poll starts, which will eventually lead to the system breaking
+ - It is possible to exclude selected state categories (i.e. charge, climate, tire-pressure, closures, drive) from the polling sequence. This speeds up the poll, thereby allowing lower values of polling interval to be reliably selected. To exclude categories from the poll, include the category name in a space separated list of names in the Docker environment variable NO_POLL_SECTIONS. E.g. to only poll the charge category you would set NO_POLL_SECTIONS='climate tire-pressure closures drive'
+ - The poll will only take place if the car is awake at the moment the poll is attempted. It will not wake the car if it is asleep to prevent battery drain issues. Once the car is asleep you will have to wake it if you want polling to recommence. You can wake the car by turning on charging power, or sending a command for example. If the polling interval is 660 or greater, the car  will likely be asleep by the time the next poll comes around (in 11 minutes). Whilst the implementation used here is not identical, the principle is described well here https://github.com/alandtse/tesla/wiki/Polling-policy
+ - Additional Force Update button entities have been added. 'Force Update All' does what the previously named 'Force Date Update' button did, i.e. wakes the car and updates all the entities. There are now individual Force Update buttons for each of the state categories. These wake the car and update just that category. Note these buttons do not respect the NO_POLL_SECTIONS environment variable. Finally, there is a button called 'Force Update Env', which is like 'Force Update All', but it does respect the NO_POLL_SECTIONS environment variable
 
 ## Two options to run this tool:
 
