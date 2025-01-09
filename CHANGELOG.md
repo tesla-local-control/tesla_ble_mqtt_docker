@@ -1,12 +1,10 @@
 # Changelog
 
-## 0.4.1
+## 0.4.0b-dev
 
 - RELEASE NEW Feature: Automatic Polling is now possible for state
 
 - NEW Feature: The following new states / entities are added:
-   - Sensors: Awake (updated approx every 30 secs from body-controller-state)
-   - Binary_Sensors: Presence_BC (experimental presence detection updated approx every 30 secs from body_controller_state rather than listening for BLE mac)
    - Switches: Polling 
    - Numbers: Polling Interval
    - Buttons: Force Update buttons for individual state categories 
