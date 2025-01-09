@@ -1,4 +1,4 @@
 [submodule "app"]
 	path = app
-	url = git@github.com:tesla-local-control/tesla_ble_mqtt_core.git
+	url = https://github.com/tesla-local-control/tesla_ble_mqtt_core.git
 	branch = iain-dev-0.4
