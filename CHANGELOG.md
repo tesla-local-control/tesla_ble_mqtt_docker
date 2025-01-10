@@ -18,6 +18,8 @@
    - Errors which occur whilst reading state will not automatically prevent the next state or state category being read. This will fix an issue reported in #135 below where a user doesn't have a Heated Steering Wheel. This previously prevented any states after this one from being read
 
 - Fixes:
+   - [ Dev ] Bad variable name #75 (_docker). Many thanks to aneisch and dettofatto who really helped to track down this bug
+   - parse error: Invalid numeric literal #74 (_docker). Many thanks to jipema who also helped a lot in identifying this issue
    - All my sensor entities are "unknown" #131 (_core)
    - Any potential to "read state" via bluetooth? #115 (_core)
 
