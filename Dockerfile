@@ -12,7 +12,7 @@ ENV GOPATH=/root/go
 
 # Apply patch, see https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 # Thanks to https://github.com/BogdanDIA                                                         
-COPY app/patches/vehicle-command/device_linux.go /vehicle-command/pkg/connector/ble/
+COPY patches/vehicle-command/device_linux.go /vehicle-command/pkg/connector/ble/
 
 RUN go get ./... && \
   go build ./... && \
