@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.4.1
+## 0.4.3-dev
+
+- Experimental release to test vehicle-command patch to allow BT versions <=5.0, and to allow changes to the hci device number. Credit to https://github.com/BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
+
+## 0.4.2
 
 - RELEASE NEW Feature: Automatic Polling is now possible for state
 
