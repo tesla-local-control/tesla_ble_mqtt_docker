@@ -4,6 +4,8 @@
 
 - Experimental release to test vehicle-command patch to allow BT versions <=5.0, and to allow changes to the hci device number. Credit to https://github.com/BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 
+- NEW Feature: New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which affect speed versus robustness
+
 ## 0.4.2
 
 - RELEASE NEW Feature: Automatic Polling is now possible for state
