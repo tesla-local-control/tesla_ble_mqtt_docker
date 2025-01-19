@@ -7,7 +7,7 @@
    - Wait for tesla-control processes to finish before moving on with the sequence. There is now no need to sleep after each command is sent, so the $BLE_CMD_RETRY_DELAY environment variable is deprecated. Credit to BogdanDIA for this. https://github.com/BogdanDIA
    - Don't make body-controller-state calls every $PS_LOOP_DELAY as it's too hard on the bluetooth. The preferred means of determining presence is confirmed as the original passive bluetooth scanning, not body controller state. Awake sensor is not now updated every $PS_LOOP_DELAY secs but only when state is read or a command is sent
    - Function teslaCtrlSendCommand() is deprecated in favour of the improved sendBLECommand()
-   - Patch vehicle-command to allow BT versions <=5.0, and to allow changes to the hci device number. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
+   - Patch vehicle-command to allow BT versions <=5.0, and to specify the hci device number using environment variable $BLE_HCI_NUM. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 
 - NEW Feature: New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
 
