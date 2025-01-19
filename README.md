@@ -1,8 +1,8 @@
 # Tesla BLE MQTT Docker
 
 ### Update: it is now possible to read state as well as send commands using Bluetooth
-### Update 2 (dev branch): automatic polling of state is now possible, plus various other enhancements.
-#### Install the #dev image (v0.4.1a-dev) from Dockerhub. You can install from Github #iain-dev branch if you wish (though that changes and may break at any time). Instructions on #iain-dev branch README.md https://github.com/tesla-local-control/tesla_ble_mqtt_docker/blob/iain-dev/README.md Give me feedback by raising an Issue. Expect to find issues!
+### Update 2 (dev branch): automatic polling of state is now possible, plus various other enhancements. Robustness has been improved since earlier v0.4.x-dev releases
+#### Install the #dev image (v0.4.3b-dev) from Dockerhub. You can install from Github #iain-dev branch if you wish (though that changes and may break at any time). Instructions on #iain-dev branch README.md https://github.com/tesla-local-control/tesla_ble_mqtt_docker/blob/iain-dev/README.md Give me feedback by raising an Issue. Expect to find issues!
 
 Send commands and read state via MQTT for a Tesla car using Bluetooth Low Energy (BLE). BLE bypasses the current Fleet API rate limitation and does not rely on the API.
 The MQTT setup can run on your Home Assistant (HA) system or any device separate from your HA server, e.g. Raspberry Pi located close to where you park your car
