@@ -18,11 +18,6 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if ! echo $BLE_CMD_RETRY_DELAY | grep -Eq "$FLOAT_PATTERN"; then
-    log_fatal "Fatal; BLE_CMD_RETRY_DELAY:$BLE_CMD_RETRY_DELAY is not compliant, please check this setting"
-    exitOnError=1
-  fi
-
   if ! echo $PRESENCE_DETECTION_TTL | grep -Eq "$INT0PLUS_PATTERN"; then
     log_fatal "Fatal; PRESENCE_DETECTION_TTL:$PRESENCE_DETECTION_TTL is not compliant, please check this setting"
     exitOnError=1
