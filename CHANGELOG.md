@@ -13,6 +13,7 @@
 
 - Fixes:
    - Standardize on Celsius #144 (_core). This deprecates the $TEMPERATURE_UNIT_FAHRENHEIT environment variable, and removes associated code. Thanks to https://github.com/aneisch for the suggestion and for modding and testing the code. In doing so, he found an error in the HA MQTT Number entity code https://github.com/home-assistant/core/issues/135619
+   - Odometer sensor now has a device_class defined, so units can be selected in the Settings dialog for the entity in HA https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/79
 
 ## 0.4.2
 
