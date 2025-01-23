@@ -9,7 +9,9 @@
    - Function teslaCtrlSendCommand() is deprecated in favour of the improved sendBLECommand()
    - Patch vehicle-command to allow BT versions <=5.0, and to specify the hci device number using environment variable $BLE_HCI_NUM. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 
-- NEW Feature: New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
+- NEW Features:
+   - New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
+   - Environment variable $OPTIMISTIC_MODE can be set to true. When true, entities will immediately change state after a command is sent from HA (even if the command ultimately fails). If false (default), the entity will wait for state confirmation via polling or a force update button press. See https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/82
 
 - Fixes:
    - Standardize on Celsius #144 (_core). This deprecates the $TEMPERATURE_UNIT_FAHRENHEIT environment variable, and removes associated code. Thanks to https://github.com/aneisch for the suggestion and for modding and testing the code. In doing so, he found an error in the HA MQTT Number entity code https://github.com/home-assistant/core/issues/135619
