@@ -8,6 +8,7 @@
    - Don't make body-controller-state calls every $PS_LOOP_DELAY as it's too hard on the bluetooth. The preferred means of determining presence is confirmed as the original passive bluetooth scanning, not body controller state. Awake sensor is not now updated every $PS_LOOP_DELAY secs but only when state is read or a command is sent
    - Function teslaCtrlSendCommand() is deprecated in favour of the improved sendBLECommand()
    - Patch vehicle-command to allow BT versions <=5.0, and to specify the hci device number using environment variable $BLE_HCI_NUM. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
+   - Use the latest version of vehicle-command (v0.3.3 at the time of writing), which amongst other things adds 'Refactor BLE connecting to allow scanning for vehicle presence' https://github.com/teslamotors/vehicle-command/pull/353, though I'm not sure how this gets used in practice. More importantly it claims to fix 'ble.NewConnection sometimes never returns' https://github.com/teslamotors/vehicle-command/issues/272, which if it works will improve robustness for some users
 
 - NEW Features:
    - New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
@@ -17,6 +18,7 @@
    - Standardize on Celsius #144 (_core). This deprecates the $TEMPERATURE_UNIT_FAHRENHEIT environment variable, and removes associated code. Thanks to https://github.com/aneisch for the suggestion and for modding and testing the code. In doing so, he found an error in the HA MQTT Number entity code https://github.com/home-assistant/core/issues/135619
    - Odometer sensor now has a device_class defined, so units can be selected in the Settings dialog for the entity in HA https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/79
    - Rear heated seats didn't respond to commands
+   - If a user has two cars and has one device per car, commands would be received and attempted to be sent by both devices. Thanks to @dettofatto for identifying this, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/78#issuecomment-2628893756
 
 ## 0.4.2
 
