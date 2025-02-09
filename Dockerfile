@@ -8,7 +8,7 @@ RUN mkdir -p /app/bin
 RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
 WORKDIR /vehicle-command
 ENV GOPATH=/root/go
-RUN git checkout releases/v0.3.2
+#RUN git checkout releases/v0.3.2
 
 # Apply patch, see https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 # Thanks to https://github.com/BogdanDIA                                                         
