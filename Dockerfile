@@ -12,7 +12,7 @@ ENV VEHICLE_COMMAND_VERSION=v0.3.3
 #RUN git checkout releases/v0.3.3
 
 ADD https://github.com/teslamotors/vehicle-command/archive/refs/tags/$VEHICLE_COMMAND_VERSION.zip /tmp
-RUN unzip /tmp/$VEHICLE_COMMAND_VERSION.zip -d $WORKDIR
+RUN unzip /tmp/$VEHICLE_COMMAND_VERSION.zip -d /vehicle-command
 
 # Apply patch, see https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
 # Thanks to https://github.com/BogdanDIA                                                         
