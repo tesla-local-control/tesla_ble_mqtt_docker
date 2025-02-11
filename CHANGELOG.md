@@ -1,14 +1,14 @@
 # Changelog
 
-## 0.4.3-dev
+## 0.4.3
 
-- Development release to improve robustness, and fix various things identified in previous dev releases:
+- Release to improve robustness, and fix various things identified during recent development:
    - Terminate tesla-control processes that run longer than $TC_KILL_TIMEOUT seconds. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/142
    - Wait for tesla-control processes to finish before moving on with the sequence. There is now no need to sleep after each command is sent, so the $BLE_CMD_RETRY_DELAY environment variable is deprecated. Credit to BogdanDIA for this. https://github.com/BogdanDIA
    - Don't make body-controller-state calls every $POLL_STATE_LOOP_DELAY as it's too hard on the bluetooth. The preferred means of determining presence is confirmed as the original passive bluetooth scanning, not body controller state. Awake sensor is not now updated every $POLL_STATE_LOOP_DELAY secs but only when state is read or a command is sent
    - Function teslaCtrlSendCommand() is deprecated in favour of the improved sendBLECommand()
    - Patch vehicle-command to allow BT versions <=5.0, and to specify the hci device number using environment variable $BLE_HCI_NUM. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
-   - Use the latest version of vehicle-command (v0.3.3 at the time of writing), which amongst other things adds 'Refactor BLE connecting to allow scanning for vehicle presence' https://github.com/teslamotors/vehicle-command/pull/353, though I'm not sure how this gets used in practice. More importantly it claims to fix 'ble.NewConnection sometimes never returns' https://github.com/teslamotors/vehicle-command/issues/272, which if it works will improve robustness for some users
+   - Use the latest version of vehicle-command (v0.3.3 at the time of writing), which amongst other things adds 'Refactor BLE connecting to allow scanning for vehicle presence' https://github.com/teslamotors/vehicle-command/pull/353, though I'm not sure how this gets used in practise. More importantly it claims to fix 'ble.NewConnection sometimes never returns' https://github.com/teslamotors/vehicle-command/issues/272, which if it works will improve robustness for some users
 
 - NEW Features:
    - New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
@@ -20,6 +20,7 @@
    - Rear heated seats didn't respond to commands
    - If a user has two cars and has one device per car, commands would be received and attempted to be sent by both devices. Thanks to @dettofatto for identifying this, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/78#issuecomment-2628893756
    - Fix the following log warnings when HA restarts / Disabled entities are enabled: 'Invalid configuration request:tesla_ble/xxxx/config topic:tesla_ble/xxxx/config vin:xxxx' and 'Invalid command request; vin:xxxx topic:tesla_ble/xxxx/command msg:tesla_ble/xxxx/command'
+   - Read MQTT derived variables at startup and warn if Polling Interval is less than 660 (which may prevent the car from sleeping)
 
 - Breaking Changes:
    - PS_LOOP_DELAY environment variable is now called POLL_STATE_LOOP_DELAY to improve clarity and align with both versions of the project. The default is set to 30 secs so unless the user has previously specified a different value, this should not cause an issue for most people
