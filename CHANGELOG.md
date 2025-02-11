@@ -19,6 +19,7 @@
    - Odometer sensor now has a device_class defined, so units can be selected in the Settings dialog for the entity in HA https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/79
    - Rear heated seats didn't respond to commands
    - If a user has two cars and has one device per car, commands would be received and attempted to be sent by both devices. Thanks to @dettofatto for identifying this, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/78#issuecomment-2628893756
+   - Fix the following log warnings when HA restarts / Disabled entities are enabled: 'Invalid configuration request:tesla_ble/xxxx/config topic:tesla_ble/xxxx/config vin:xxxx' and 'Invalid command request; vin:xxxx topic:tesla_ble/xxxx/command msg:tesla_ble/xxxx/command'
 
 - Breaking Changes:
    - PS_LOOP_DELAY environment variable is now called POLL_STATE_LOOP_DELAY to improve clarity and align with both versions of the project. The default is set to 30 secs so unless the user has previously specified a different value, this should not cause an issue for most people
