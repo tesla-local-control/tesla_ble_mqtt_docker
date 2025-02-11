@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.3
+## 0.4.3-rc1
 
 - Release to improve robustness, and fix various things identified during recent development:
    - Terminate tesla-control processes that run longer than $TC_KILL_TIMEOUT seconds. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/142
