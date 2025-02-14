@@ -22,3 +22,6 @@ This is a Docker container which can be deployed on any machine you want. See [I
 ### 2 - Tesla Local Control Add-on
 
 This is a Home Assistant Add-On installed on your HA instance. Go to this associated repository: [tesla-local-control-addon](https://github.com/tesla-local-control/tesla-local-control-addon)
+
+## Updating to a new version, or using the Development version
+See [UPDATING.md](UPDATING.md)
