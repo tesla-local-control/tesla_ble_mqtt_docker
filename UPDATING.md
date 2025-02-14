@@ -55,14 +55,14 @@ Some HA entities may be removed or renamed in new or development versions. To re
 - Find and click MQTT integration
 - In the Integration entries panel, click 'xx devices' where xx will be how many MQTT devices you have on your system
 - In the list of devices, find and click your car 'Tesla_BLE_XXXXXXXXXX'
-- In this panel you will see the version number of this project:
+- In this panel you will see the current version you have installed (after Firmware:):
 <img width="280" alt="image" src="https://github.com/user-attachments/assets/ba644cf3-d21c-47e8-be21-5f779985525c" />
 
  - Click the three dots to the right of 'MQTT INFO'
  - Click Delete
  - Repeat for any other cars you might have
  - After restarting the container:
-     - Check the version number of the project is as expected
+     - Check the version is as expected
      - If you want polling, check the 'State Polling' switch is on, and adjust the 'Polling Internal' slider to what you need (660 is recommended) 
      - Press the 'Force Update All' button
      - Repeat for any other cars you might have
