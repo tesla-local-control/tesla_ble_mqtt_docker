@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.3-rc1
+## 0.4.3-rc2
 
 - Release to improve robustness, and fix various things identified during recent development:
    - Terminate tesla-control processes that run longer than $TC_KILL_TIMEOUT seconds. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/142
@@ -13,6 +13,8 @@
 - NEW Features:
    - New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
    - Environment Variable $IMMEDIATE_UPDATE. If this is set to true (default), then after a command has been successfully sent to the car, the state_topic for the relevant entity is immediately updated. If set to false, this doesn't happen automatically, the state_topic is updated at the next polling occurence or a force update button press. See https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/82
+   - Add chargingState sensor. This reports the following charging states: NoPower, Stopped, Charging, Complete, Disconnected
+   - Add presence_bc as a device_tracker entity. This currently mirrors the behaviour of the presence_bc binary_sensor. Both give an alterative way of providing Presence, by using the body_controller_state call to tesla-control. They are not enabled by default in HA
 
 - Fixes:
    - Standardize on Celsius #144 (_core). This deprecates the $TEMPERATURE_UNIT_FAHRENHEIT environment variable, and removes associated code. Thanks to https://github.com/aneisch for the suggestion and for modding and testing the code. In doing so, he found an error in the HA MQTT Number entity code https://github.com/home-assistant/core/issues/135619
@@ -33,7 +35,7 @@
 
 - NEW Feature: The following new states / entities are added:
    - Sensors: Awake (updated approx every 30 secs from body-controller-state) see note for v0.4.3
-   - Binary_Sensors: Presence_BC (experimental presence detection updated approx every 30 secs from body_controller_state rather than listening for BLE mac) see note for v0.4.3
+   - Binary_Sensors: Presence_BC (experimental presence detection from body_controller_state rather than listening for BLE mac) see note for v0.4.3
    - Switches: Polling 
    - Numbers: Polling Interval
    - Buttons: Force Update buttons for individual state categories 
