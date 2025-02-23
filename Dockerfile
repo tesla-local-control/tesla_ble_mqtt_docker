@@ -1,14 +1,23 @@
 FROM golang:alpine3.21 AS build
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git unzip
 
 RUN mkdir -p /app/bin
 
-# install Tesla Go packages
-RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
-WORKDIR /vehicle-command
+# Install Tesla Go packages
 ENV GOPATH=/root/go
-# RUN git checkout tags/v0.2.1
+ENV VEHICLE_COMMAND_VERSION=0.3.3
+WORKDIR /vehicle-command-$VEHICLE_COMMAND_VERSION
+#RUN git clone https://github.com/teslamotors/vehicle-command.git /vehicle-command
+#RUN git checkout releases/v0.3.3
+
+ADD https://github.com/teslamotors/vehicle-command/archive/refs/tags/v$VEHICLE_COMMAND_VERSION.zip /tmp
+RUN unzip /tmp/v$VEHICLE_COMMAND_VERSION.zip -d /
+
+# Apply patch, see https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
+# Thanks to https://github.com/BogdanDIA                                                         
+COPY patches/vehicle-command/device_linux.go /vehicle-command-$VEHICLE_COMMAND_VERSION/pkg/connector/ble/
+
 RUN go get ./... && \
   go build ./... && \
   go install ./...
