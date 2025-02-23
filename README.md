@@ -1,6 +1,6 @@
 # Tesla BLE MQTT Docker
 
-## Update: it is now possible to read state as well as send commands using Bluetooth
+ **Major release v0.5.0 that improves Bluetooth stability and allows for periodically getting your car's state information (sensors and other entities). Whilst the car is at home, there is now no need for FleetAPI!**
 
 Send commands and read state via MQTT for a Tesla car using Bluetooth Low Energy (BLE). BLE bypasses the current Fleet API rate limitation and does not rely on the API.
 The MQTT setup can run on your Home Assistant (HA) system or any device separate from your HA server, e.g. Raspberry Pi located close to where you park your car
