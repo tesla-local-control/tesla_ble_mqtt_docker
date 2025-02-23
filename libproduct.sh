@@ -18,11 +18,6 @@ function validateEnvVars() {
     exitOnError=1
   fi
 
-  if ! echo $BLE_CMD_RETRY_DELAY | grep -Eq "$FLOAT_PATTERN"; then
-    log_fatal "Fatal; BLE_CMD_RETRY_DELAY:$BLE_CMD_RETRY_DELAY is not compliant, please check this setting"
-    exitOnError=1
-  fi
-
   if ! echo $PRESENCE_DETECTION_TTL | grep -Eq "$INT0PLUS_PATTERN"; then
     log_fatal "Fatal; PRESENCE_DETECTION_TTL:$PRESENCE_DETECTION_TTL is not compliant, please check this setting"
     exitOnError=1
@@ -40,11 +35,6 @@ function validateEnvVars() {
 
   if [ "$DEBUG" != 'true' ] && [ "$DEBUG" != 'false' ]; then
     log_fatal "Fatal; DEBUG:$DEBUG is not compliant, please check this setting"
-    exitOnError=1
-  fi
-
-  if [ "$TEMPERATURE_UNIT_FAHRENHEIT" != 'true' ] && [ "$TEMPERATURE_UNIT_FAHRENHEIT" != 'false' ]; then
-    log_fatal "Fatal; TEMPERATURE_UNIT_FAHRENHEIT:$TEMPERATURE_UNIT_FAHRENHEIT is not compliant, please check this setting"
     exitOnError=1
   fi
 

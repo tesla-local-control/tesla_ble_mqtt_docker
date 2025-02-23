@@ -1,5 +1,69 @@
 # Changelog
 
+## 0.5.0
+ 
+ **Major release that improves Bluetooth stability and allows for periodically getting your car's state information (sensors and other entities). Whilst the car is at home, there is now no need for FleetAPI!**
+
+- Details of Bluetooth stability improvements:
+   - Terminate tesla-control processes that run longer than $TC_KILL_TIMEOUT seconds. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/142
+   - Wait for tesla-control processes to finish before moving on with the sequence. There is now no need to sleep after each command is sent, so the $BLE_CMD_RETRY_DELAY environment variable is deprecated. Credit to BogdanDIA for this. https://github.com/BogdanDIA
+   - Don't make body-controller-state calls every $POLL_STATE_LOOP_DELAY as it's too hard on the bluetooth. The preferred means of determining presence is confirmed as the original passive bluetooth scanning, not body controller state. Awake sensor is not now updated every $POLL_STATE_LOOP_DELAY secs but only when state is read or a command is sent
+   - Function teslaCtrlSendCommand() is deprecated in favour of the improved sendBLECommand()
+   - Patch vehicle-command to allow BT versions <=5.0, and to specify the hci device number using environment variable $BLE_HCI_NUM. Credit again to BogdanDIA. Discussion: https://github.com/tesla-local-control/tesla_ble_mqtt_core/issues/125
+   - Use the latest version of vehicle-command (v0.3.3 at the time of writing), which amongst other things adds 'Refactor BLE connecting to allow scanning for vehicle presence' https://github.com/teslamotors/vehicle-command/pull/353, though I'm not sure how this gets used in practise. More importantly it claims to fix 'ble.NewConnection sometimes never returns' https://github.com/teslamotors/vehicle-command/issues/272, which if it works will improve robustness for some users
+
+- NEW Features:
+   - New poll_state_loop delay and tesla-command timeout environment variables added, to allow the user to fine tune settings which may affect speed versus robustness
+   - Environment Variable $IMMEDIATE_UPDATE. If this is set to true (default), then after a command has been successfully sent to the car, the state_topic for the relevant entity is immediately updated. If set to false, this doesn't happen automatically, the state_topic is updated at the next polling occurence or a force update button press. See https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/82
+   - Add chargingState sensor. This reports the following charging states: NoPower, Stopped, Charging, Complete, Disconnected
+   - Add presence_bc as a device_tracker entity. This currently mirrors the behaviour of the presence_bc binary_sensor. Both give an alterative way of providing Presence, by using the body_controller_state call to tesla-control. They are not enabled by default in HA
+
+- Fixes:
+   - Standardize on Celsius #144 (_core). This deprecates the $TEMPERATURE_UNIT_FAHRENHEIT environment variable, and removes associated code. Thanks to https://github.com/aneisch for the suggestion and for modding and testing the code. In doing so, he found an error in the HA MQTT Number entity code https://github.com/home-assistant/core/issues/135619
+   - Odometer sensor now has a device_class defined, so units can be selected in the Settings dialog for the entity in HA https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/79
+   - Rear heated seats didn't respond to commands
+   - If a user has two cars and has one device per car, commands would be received and attempted to be sent by both devices. Thanks to @dettofatto for identifying this, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/78#issuecomment-2628893756
+   - Fix the following log warnings when HA restarts / Disabled entities are enabled: 'Invalid configuration request:tesla_ble/xxxx/config topic:tesla_ble/xxxx/config vin:xxxx' and 'Invalid command request; vin:xxxx topic:tesla_ble/xxxx/command msg:tesla_ble/xxxx/command'
+   - Read MQTT derived variables at startup and warn if Polling Interval is less than 660 (which may prevent the car from sleeping)
+
+- Breaking Changes:
+   - PS_LOOP_DELAY environment variable is now called POLL_STATE_LOOP_DELAY to improve clarity and align with both versions of the project. The default is set to 30 secs so unless the user has previously specified a different value, this should not cause an issue for most people
+   - TC_CON_TIMEOUT environment variable is now called TC_CONNECT_TIMEOUT to improve clarity and align with both versions of the project. The default is set to 10 secs so unless the user has previously specified a different value, this should not cause an issue for most people
+   - TC_CMD_TIMEOUT environment variable is now called TC_COMMAND_TIMEOUT to improve clarity and align with both versions of the project. The default is set to 5 secs so unless the user has previously specified a different value, this should not cause an issue for most people
+
+## 0.4.2
+
+- RELEASE NEW Feature: Automatic Polling is now possible for state
+
+- NEW Feature: The following new states / entities are added:
+   - Sensors: Awake (updated approx every 30 secs from body-controller-state) see note for v0.4.3
+   - Binary_Sensors: Presence_BC (experimental presence detection from body_controller_state rather than listening for BLE mac) see note for v0.4.3
+   - Switches: Polling 
+   - Numbers: Polling Interval
+   - Buttons: Force Update buttons for individual state categories 
+
+- NEW Feature: Environment variable NO_POLL_SECTIONS is provided to disable updating of various state categories during polling. This speeds up state updates, though less state entities are updated by the polling. The entities can still be manually updated by pressing the Force Update button for the relevent state category
+
+- Changes:
+   - 'Force Data Update' Button is renamed to 'Force Update All'
+   - Errors which occur whilst reading state will not automatically prevent the next state or state category being read. This will fix an issue reported in #135 below where a user doesn't have a Heated Steering Wheel. This previously prevented any states after this one from being read
+
+- Fixes:
+   - [ Dev ] Bad variable name #75 (_docker). Many thanks to aneisch and dettofatto who really helped to track down this bug
+   - parse error: Invalid numeric literal #74 (_docker). Many thanks to jipema who also helped a lot in identifying this issue
+   - All my sensor entities are "unknown" #131 (_core)
+   - Any potential to "read state" via bluetooth? #115 (_core)
+
+## 0.3.1
+
+- NEW Feature: The following new states / entities are added:
+   - Sensors: Charger Voltage; Charger Range Added; Charge Speed mph; Passenger Temp Setting, Odometer
+   - Binary_Sensors: Front Defroster; Rear Defroster; Wiper Heater; Side Mirror Heater; Doors Open
+   - Selects: Heated Seat Rear Left; Heated Seat Rear Right
+
+- Fixes:
+   - Temp units incorrect for new Inside Temp and Outside Temp #135 (_core)
+
 ## 0.3.0
 
 - MAJOR NEW Feature: Read car state using BLE
@@ -36,24 +100,14 @@
 #### Contributors - Thank you!
 - @g4rb4g3 Clear logging on charging current setting
 
-## 0.2.1-1
-
-Minor version - no change in core code
-
-### Changed
-
-- CHG: Freeze version of vehicle-command module to ensure compatibility with Alpine Linux available go version (<1.23)
-
 ## 0.2.1
 
 ### <p>**WARNING WARNING WARNING**<br>
-Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READING THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
+Upgrading from 0.0.10 or previous? DO NOT UPGRADE PRIOR TO READ THE 0.1.0 UPGRADE INSTRUCTIONS.</p>
 
 ### Changed
 
 - NEW Feature: Allow to set temperature unit F|C via bool
-- FIX: Presence detection can not be disabled PR[#52](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/52)
-- FIX: Match comment with regex check PR[#50](https://github.com/tesla-local-control/tesla_ble_mqtt_docker/pull/50)
 
 ## 0.2.0
 
