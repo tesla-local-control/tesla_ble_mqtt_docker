@@ -32,4 +32,3 @@ This is a Home Assistant Add-On installed on your HA instance. Go to this associ
 
 ## Updating to a new version, or using the Development version
 See [UPDATING.md](UPDATING.md)
-
