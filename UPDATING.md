@@ -3,19 +3,20 @@
 ## Updating to a new version
 Here's how using the command line. It is assumed you are using images from DockerHub. All previous settings and enrolled keys are preserved:
 
-- Stop the Docker stack, and remove the container:
-```
-docker compose down
-docker rm tesla_ble_mqtt
-```
 - Change to the directory where your docker-compose.yml and stack.env is located
 ```
 cd Directory/Where/Your_docker-compose.yml_Is
+```
+- Stop the Docker stack:
+```
+docker compose down
+docker rm tesla_ble_mqtt
 ```
 - A new version may introduce features which require changes to the environment variables (in stack.env or docker-compose.yml). Check the CHANGELOG.md for the new version, and make changes to these files as required
 - Optional, but it is recommended that you delete the Home Assistant MQTT device for your car(s), see below
 - Pull in the new Docker image and restart the stack
 ```
+docker pull iainbullock/tesla_ble_mqtt:latest
 docker compose up -d
 ```
 - Check the version is as expected in the Docker logs or on the Home Assistant MQTT device page
@@ -24,13 +25,13 @@ docker compose up -d
 ## Using the development version
 Here's how using the command line. It is assumed you are using images from DockerHub. All previous settings and enrolled keys are preserved:
 
-- Stop the Docker stack
-```
-docker compose down
-```
 - Change to the directory where your docker-compose.yml and stack.env is located
 ```
 cd Directory/Where/Your_docker-compose.yml_Is
+```
+- Stop the Docker stack
+```
+docker compose down
 ```
 - The dev version may introduce features which require changes to the environment variables (in stack.env or docker-compose.yml). Check the CHANGELOG.md for the dev version (this will usually be in the #iain-dev branch on GitHub https://github.com/tesla-local-control/tesla_ble_mqtt_docker/blob/iain-dev/CHANGELOG.md), and make changes to these files as required
 - In docker-compose.yml, change the line:
@@ -44,6 +45,7 @@ image: "iainbullock/tesla_ble_mqtt:dev"
 - Optional, but it is recommended that you delete the Home Assistant MQTT device for your car(s), see below
 - Pull in the new Docker image and restart the stack
 ```
+docker pull iainbullock/tesla_ble_mqtt:dev
 docker compose up -d
 ```
 - Check the version is as expected in the Docker logs or on the Home Assistant MQTT device page
