@@ -4,10 +4,10 @@
  Development updates for version 0.5.0
  
  - NEW Features
-  - Add ability to send arbitrary tesla-control commands https://github.com/tesla-local-control/tesla_ble_mqtt_core/pull/160. This allows sending of a command which is not yet supported directly by this project. If you have the need for an command which is not yet supported, raise an Issue to request it and it will be added at a future update. Many thanks to aneisch for this contribution https://github.com/aneisch
+    - Add ability to send arbitrary tesla-control commands https://github.com/tesla-local-control/tesla_ble_mqtt_core/pull/160. This allows sending of a command which is not yet supported directly by this project. If you have the need for an command which is not yet supported, raise an Issue to request it and it will be added at a future update. Many thanks to aneisch for this contribution https://github.com/aneisch
 
  - Fixes:
-  - Default value for MQTT derived variable var_${vin}_polling was incorrect 
+   - Default value for MQTT derived variable var_${vin}_polling was incorrect 
 
 ## 0.5.0
  
