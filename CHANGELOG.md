@@ -10,6 +10,7 @@
  - Fixes:
     - Default value for MQTT derived variable var_${vin}_polling was incorrect
     - Remove the 2>&1 redirection from body-controller-state calls. This caused the JSON to get scrambled if the bluetooth had an error. Thanks to jurviz https://github.com/jurviz for identifying this issue and proposing the fix, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/issues/112
+    - The 'Immediate Update' feature remained enabled when the IMMEDIATE_UPDATE environment variable was set to false
 
 ## 0.5.0
  
