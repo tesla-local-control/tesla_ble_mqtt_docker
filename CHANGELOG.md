@@ -5,7 +5,7 @@
  
  - NEW Features
     - Add ability to send arbitrary tesla-control commands https://github.com/tesla-local-control/tesla_ble_mqtt_core/pull/160. This allows sending of a command which is not yet supported directly by this project. If you have the need for an command which is not yet supported, raise an Issue to request it and it will be added at a future update. Many thanks to aneisch for this contribution https://github.com/aneisch
-    - Add last_cmd_failed binary sensor, which is set to 'on' if the last attempt to send a command was not successful. This could be because the car is away, bluetooth communication failed, or the command was rejected by the car. Thanks to top-gun https://github.com/top-gun for suggesting this feature, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/discussions/110
+    - Add last_cmd_status binary sensor, which is set to 'on' if the last attempt to send a command was not successful. This could be because the car is away, bluetooth communication failed, or the command was rejected by the car. Thanks to top-gun https://github.com/top-gun for suggesting this feature, see https://github.com/tesla-local-control/tesla_ble_mqtt_docker/discussions/110
 
  - Fixes:
     - Default value for MQTT derived variable var_${vin}_polling was incorrect
