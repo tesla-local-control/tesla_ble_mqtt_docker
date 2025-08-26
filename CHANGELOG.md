@@ -4,6 +4,7 @@
  Development updates for version 0.5.0
  
  - NEW Features
+   - Add chargerPhases sensor. Thanks to @dettofatto (https://github.com/dettofatto) for the request https://github.com/tesla-local-control/tesla_ble_mqtt_docker/discussions/121
 
  - Fixes:
     - The 'Immediate Update' feature remained enabled when the IMMEDIATE_UPDATE environment variable was set to false
