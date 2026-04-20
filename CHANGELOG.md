@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.5-dev
+ Development updates for version 0.5.0
+
+ - NEW Features
+ 
 ## 0.5.4-dev
  Development updates for version 0.5.0
  
