@@ -4,7 +4,13 @@
  Development updates for version 0.5.0
 
  - NEW Features
- 
+   - Add the following entities which provide the timestamp of when the respective state category was last read from the car and updated in MQTT. These entiies have the MQTT 'force_update: true' configuration option which sends update events even if the value hasn’t changed, thereby providing a means for HA to determine when the respective state category was actually last read and updated. The sensor entities and respective state categories provided in this release are as follows: 
+      - charge_state_ts -> StateCategoryCharge
+      - climate_state_ts -> StateCategoryClimate
+      - closure_state_ts -> StateCategoryClosures
+      - tyre_state_ts -> StateCategoryTirePressure
+      - drive_state_ts -> StateCategoryDrive
+
 ## 0.5.4-dev
  Development updates for version 0.5.0
  
